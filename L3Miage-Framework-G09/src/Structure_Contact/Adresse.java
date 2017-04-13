@@ -1,4 +1,4 @@
-package Module_Outil;
+package Structure_Contact;
 
 import FrameworkExceptions.FrameworkException;
 

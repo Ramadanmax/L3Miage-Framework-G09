@@ -1,5 +1,5 @@
-import Module_Outil.Adresse;
-import Module_Outil.Contact;
+import Structure_Contact.Adresse;
+import Structure_Contact.Contact;
 
 public class test {
 

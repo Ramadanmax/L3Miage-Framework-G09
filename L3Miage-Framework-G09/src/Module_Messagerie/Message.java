@@ -1,7 +1,8 @@
 package Module_Messagerie;
 
 import java.text.SimpleDateFormat;
-import Module_Outil.Contact;
+
+import Structure_Contact.Contact;
 
 public class Message {
 

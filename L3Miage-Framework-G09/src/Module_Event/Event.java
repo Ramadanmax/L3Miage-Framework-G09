@@ -1,7 +1,8 @@
 package Module_Event;
 import java.util.Date;
 import java.util.List;
-import Module_Outil.Contact;
+
+import Structure_Contact.Contact;
 
 /**
  * La classe Event permet aux utilisateurs de ce Framework de créer/supprimer et modifier un Evenement.

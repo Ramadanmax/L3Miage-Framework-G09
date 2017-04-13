@@ -3,7 +3,7 @@ package Module_Messagerie;
 import java.rmi.Remote;
 import java.util.List;
 
-import Module_Outil.Contact;
+import Structure_Contact.Contact;
 
 
 public interface ChatRoom extends Remote {

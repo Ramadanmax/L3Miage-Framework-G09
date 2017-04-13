@@ -5,7 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import Module_Outil.Contact;
+import Structure_Contact.Contact;
 
 /**
  * @author matheyt

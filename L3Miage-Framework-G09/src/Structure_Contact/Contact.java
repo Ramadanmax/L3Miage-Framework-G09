@@ -1,4 +1,4 @@
-package Module_Outil;
+package Structure_Contact;
 import java.util.ArrayList;
 import java.util.List;
 
