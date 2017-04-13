@@ -25,17 +25,18 @@ public class Adresse {
 	 * @param codePostal
 	 * @param pays
 	 */
-	public Adresse(int numRue, String nomRue, String ville, String codePostal, String pays) throws FrameworkException {
+	public Adresse(int numRue, String nomRue, String ville, String codePostal, String pays) {
 		this.numRue = numRue;
 		this.nomRue = nomRue;
-		this.ville = ville;
-		this.pays = pays;
-
-		// Controle de validation du code postal
-		if (codePostal.length() != 5) {
-			throw new FrameworkException("Code postal \"" + codePostal + "\" invalide.");
-		}
-
+		this.ville = ville.toUpperCase();
+		this.pays = pays.toUpperCase();
 		this.codePostal = codePostal;
+	}
+
+	/**
+	 * Methode toString d'une Adresse.
+	 */
+	public String toString() {
+		return this.numRue + " " + this.nomRue + ", " + this.codePostal + " " + this.ville + ", " + this.pays;
 	}
 }
