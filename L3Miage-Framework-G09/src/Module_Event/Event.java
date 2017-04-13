@@ -13,6 +13,7 @@ import Module_Outil.Contact;
  */
 public class Event{
 	//
+	//
 	private String nom,lieu;
 	private Date date;
 	private List<Contact> contacts;
