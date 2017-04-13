@@ -29,7 +29,7 @@ public class Annuaire {
 	/**
 	 * Recuperation des contacts de l'Annuaire.
 	 * 
-	 * @return this.contacts
+	 * @return this.contacts Les Contacts de l'Annuaire courant.
 	 */
 	public List<Contact> getContacts() {
 		return this.contacts;
