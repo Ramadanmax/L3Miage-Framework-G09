@@ -1,7 +1,5 @@
 package Structure_Contact;
 
-import FrameworkExceptions.FrameworkException;
-
 /**
  * Classe Adresse, structure de l'Adresse d'un Contact.
  * 
