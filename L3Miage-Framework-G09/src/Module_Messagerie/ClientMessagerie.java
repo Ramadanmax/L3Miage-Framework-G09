@@ -6,10 +6,19 @@ import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+/**
+ * Classe qui permet de mettre en place le RMI du cote client en regardant dans le Naming si il trouve la class ChatRoom
+ *  et L'enregistre dans une variable.
+ * @author matheyt
+ */
 public class ClientMessagerie {
 
 	private ChatRoom chatRoom;
 
+	/**
+	 * contructeur de la classe
+	 * @param nomServeur
+	 */
 	public ClientMessagerie(String nomServeur) {
 
 		try {
@@ -26,6 +35,10 @@ public class ClientMessagerie {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public ChatRoom getChatRoom(){
+		return this.chatRoom;
 	}
 
 }
