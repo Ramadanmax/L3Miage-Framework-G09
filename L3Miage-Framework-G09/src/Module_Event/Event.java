@@ -12,7 +12,7 @@ import Module_Outil.Contact;
  * @author Maxime RAMADANOSKI
  */
 public class Event{
-	
+	//
 	private String nom,lieu;
 	private Date date;
 	private List<Contact> contacts;
