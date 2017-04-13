@@ -1,5 +1,5 @@
 package Module_Annuaire;
 
-public class Contact {
+public class Annuaire {
 
 }
