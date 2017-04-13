@@ -1,7 +1,5 @@
 package Module_Outil;
 
-import java.util.regex.*;
-
 import FrameworkExceptions.FrameworkException;
 
 public class Adresse {
@@ -21,19 +19,17 @@ public class Adresse {
 	 * @param codePostal
 	 * @param pays
 	 */
-	public Adresse(int numRue, String nomRue, String ville, String codePostal, String pays) {
+	public Adresse(int numRue, String nomRue, String ville, String codePostal, String pays) throws FrameworkException {
 		this.numRue = numRue;
 		this.nomRue = nomRue;
 		this.ville = ville;
-		
-		// Controle de validation du code postal
-		Pattern pattern = Pattern.compile("[0-9]{5}");
-        Matcher matcher = pattern.matcher(this.codePostal);
-        if(!matcher.find()) {
-            throw new FrameworkException("Code postal \"" + this.codePostal + "\" invalide.");
-        }
-        
-		this.codePostal = codePostal;
 		this.pays = pays;
+
+		// Controle de validation du code postal
+		if (codePostal.length() != 5) {
+			throw new FrameworkException("Code postal \"" + codePostal + "\" invalide.");
+		}
+		
+		this.codePostal = codePostal;
 	}
 }

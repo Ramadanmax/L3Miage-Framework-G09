@@ -2,6 +2,7 @@ package Module_Outil;
 import java.util.ArrayList;
 import java.util.List;
 
+import FrameworkExceptions.FrameworkException;
 import Module_Annuaire.Annuaire;
 import Module_Event.Agenda;
 import Module_Messagerie.ChatRoom;
@@ -26,10 +27,16 @@ public class Contact {
 	public Contact(String nom, Adresse adresse, String mail) {
 		this.nom = nom;
 		this.adresse = adresse;
-		this.mail = mail;
 		this.annuaire = new Annuaire();
 		this.agenda = new Agenda();
 		this.chatRooms = new ArrayList<ChatRoom>();
+
+		if(!mail.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+			throw new FrameworkException("Adresse mail \"" + mail + "\" invalide.");
+		}
+		
+		this.mail = mail;
 	}
 
 	/**
