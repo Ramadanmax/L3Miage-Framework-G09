@@ -2,6 +2,12 @@ package Structure_Contact;
 
 import FrameworkExceptions.FrameworkException;
 
+/**
+ * Classe Adresse, structure de l'Adresse d'un Contact.
+ * 
+ * @author virgil
+ *
+ */
 public class Adresse {
 
 	public int numRue;
@@ -29,7 +35,7 @@ public class Adresse {
 		if (codePostal.length() != 5) {
 			throw new FrameworkException("Code postal \"" + codePostal + "\" invalide.");
 		}
-		
+
 		this.codePostal = codePostal;
 	}
 }

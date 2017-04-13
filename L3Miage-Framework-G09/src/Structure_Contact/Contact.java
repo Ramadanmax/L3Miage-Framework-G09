@@ -1,4 +1,5 @@
 package Structure_Contact;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,12 @@ import Module_Annuaire.Annuaire;
 import Module_Event.Agenda;
 import Module_Messagerie.ChatRoom;
 
+/**
+ * Classe Contact, structure d'une personne.
+ * 
+ * @author virgil
+ *
+ */
 public class Contact {
 
 	private String nom;
@@ -31,11 +38,11 @@ public class Contact {
 		this.agenda = new Agenda();
 		this.chatRooms = new ArrayList<ChatRoom>();
 
-		if(!mail.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+		if (!mail.matches(
+				"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
 			throw new FrameworkException("Adresse mail \"" + mail + "\" invalide.");
 		}
-		
+
 		this.mail = mail;
 	}
 
