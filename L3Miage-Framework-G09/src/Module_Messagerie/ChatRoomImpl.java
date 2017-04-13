@@ -14,6 +14,10 @@ import Structure_Contact.Contact;
  */
 public class ChatRoomImpl extends UnicastRemoteObject implements ChatRoom {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Message> messages;
 	private List<Contact> contacts;
 
@@ -22,7 +26,7 @@ public class ChatRoomImpl extends UnicastRemoteObject implements ChatRoom {
 	 * @throws RemoteException
 	 * 
 	 */
-	protected ChatRoomImpl() throws RemoteException {
+	public ChatRoomImpl() throws RemoteException {
 		super();
 		messages = new ArrayList<Message>();
 		contacts = new ArrayList<Contact>();
@@ -70,14 +74,6 @@ public class ChatRoomImpl extends UnicastRemoteObject implements ChatRoom {
 	public void supprimerContact(Contact contact) {
 		contacts.remove(contact);
 
-	}
-
-	/**
-	 * renvoie un contact spécifique se trouvant dans l'attributs contacts
-	 */
-	@Override
-	public Contact getcontact(Contact contact) {
-		return contacts.get(contacts.indexOf(contact));
 	}
 
 }

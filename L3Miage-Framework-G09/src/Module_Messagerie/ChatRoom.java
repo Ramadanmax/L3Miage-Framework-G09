@@ -18,7 +18,6 @@ public interface ChatRoom extends Remote {
 	
 	public void supprimerContact (Contact contact);
 	
-	public Contact getcontact (Contact contact);
 	
 
 }
