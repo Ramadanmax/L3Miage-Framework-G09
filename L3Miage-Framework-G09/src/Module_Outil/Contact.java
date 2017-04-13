@@ -1,4 +1,4 @@
-package module_outil;
+package Module_Outil;
 
 
 public class Contact {

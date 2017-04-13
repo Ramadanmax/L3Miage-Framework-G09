@@ -5,9 +5,9 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import module_outil.Contact;
+import Module_Outil.Contact;
 
-public class ChatRoomImpl extends UnicastRemoteObject implements chatRoom{
+public class ChatRoomImpl extends UnicastRemoteObject implements ChatRoom{
 	
 
 
@@ -46,7 +46,7 @@ public class ChatRoomImpl extends UnicastRemoteObject implements chatRoom{
 
 	@Override
 	public void supprimerContact(Contact contact) {
-
+		contacts.remove(contact);
 		
 	}
 
