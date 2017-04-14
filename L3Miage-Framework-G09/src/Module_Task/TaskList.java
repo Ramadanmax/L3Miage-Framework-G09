@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import FrameworkExceptions.FrameworkException;
-import Structure_Contact.Contact;
 
 /**
  * Classe TaskList, structure de la TaskList d'un Contact.

@@ -60,6 +60,7 @@ public class Agenda {
 	 * @param e
 	 * 			Le nouvel événement.
 	 */
+	
 	private void ajouterEvent(Event e){
 		events.add(e);
 	}
