@@ -88,6 +88,7 @@ public class Event{
 /**
  * Met à jour le nom de l'événement.
  * 
+ * 
  * @param nom
  * 			Le nouveau nom de l'événement.
  */
