@@ -1,6 +1,12 @@
 package Module_Securite;
 
 public class Securite {
+	
+	/** 
+	 * 
+	 * @param message
+	 * @return
+	 */
 	//Renvoi les n nombre premier, n étant la longueur du message
 	public int[] tabNbPremier(String message){
 		int[] tabNbPremier = null;
