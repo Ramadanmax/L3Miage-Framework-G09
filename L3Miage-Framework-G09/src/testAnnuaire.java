@@ -16,12 +16,19 @@ public class testAnnuaire {
 		Contact c2 = new Contact("Maxime Vanbossel", adresseC2, "maximevanbossel@hotmail.fr");
 		Contact c3 = new Contact("Charlotte Jondet", adresseC3, "charlottejondet@hotmail.fr");
 
-		// Affichage d'un contact
-		System.out.println(c1);
-
 		// Ajout de Contacts dans l'Annuaire de c1
 		c1.getAnnuaire().ajouterContact(c2);
 		c1.getAnnuaire().ajouterContact(c3);
+		
+		// TEST DES EXCEPTIONS
+		// Creation d'un Contact avec un mail invalide
+		// Contact c4 = new Contact("Exception1", adresseC1, "adresseMailSansArobase.fr");
+		// Contact c5 = new Contact("Exception2", adresseC1, "adresseMailSansPointFR@test");
+		// Contact c6 = new Contact("Exception3", adresseC1, "adresseMailSansRienEntreArobaseEtPointFRFR@.fr");
+		// Contact c7 = new Contact("Exception4", adresseC1, "@adresseMailRienAvantArobase.fr");
+
+		// Affichage d'un contact
+		System.out.println(c1);
 
 		// Affichage de l'Annuaire de c1
 		System.out.print("\n");

@@ -7,6 +7,7 @@ import FrameworkExceptions.FrameworkException;
 import Module_Annuaire.Annuaire;
 import Module_Event.Agenda;
 import Module_Messagerie.ChatRoom;
+import Module_Task.TaskList;
 
 /**
  * Classe Contact, structure d'une personne.
@@ -23,24 +24,31 @@ public class Contact {
 	private List<ChatRoom> chatRooms;
 	private Annuaire annuaire;
 	private Agenda agenda;
+	private TaskList taskList;
 
 	/**
 	 * Constructeur d'un Contact.
 	 * 
 	 * @param nom
+	 *            Le nom d'un Contact.
 	 * @param adresse
+	 *            L'Adresse d'un Contact.
 	 * @param mail
+	 *            Le mail d'un Contact.
+	 * @throws FrameworkException
 	 */
-	public Contact(String nom, Adresse adresse, String mail) {
+	public Contact(String nom, Adresse adresse, String mail) throws FrameworkException {
 		this.nom = nom;
 		this.adresse = adresse;
 		this.annuaire = new Annuaire();
 		this.agenda = new Agenda();
 		this.chatRooms = new ArrayList<ChatRoom>();
+		this.taskList = new TaskList();
 
+		// Verification de la validite du mail
 		if (!mail.matches(
 				"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
-			throw new FrameworkException("Adresse mail \"" + mail + "\" invalide.");
+			throw new FrameworkException("L'adresse mail \"" + mail + "\" saisie est invalide.");
 		}
 
 		this.mail = mail;
@@ -49,7 +57,7 @@ public class Contact {
 	/**
 	 * Getter du nom d'un Contact.
 	 * 
-	 * @return this.nom Le nom du Contact courant.
+	 * @return Le nom du Contact courant.
 	 */
 	public String getNom() {
 		return nom;
@@ -58,7 +66,7 @@ public class Contact {
 	/**
 	 * Getter de l'adresse d'un Contact.
 	 * 
-	 * @return this.adresse L'adresse du Contact courant.
+	 * @return L'adresse du Contact courant.
 	 */
 	public Adresse getAdresse() {
 		return adresse;
@@ -67,7 +75,7 @@ public class Contact {
 	/**
 	 * Getter du mail d'un Contact.
 	 * 
-	 * @return this.mail Le mail du Contact courant.
+	 * @return Le mail du Contact courant.
 	 */
 	public String getMail() {
 		return mail;
@@ -76,7 +84,7 @@ public class Contact {
 	/**
 	 * Getter des ChatRooms d'un Contact.
 	 * 
-	 * @return this.chatRooms La liste de ChatRoom du Contact courant.
+	 * @return La liste de ChatRoom du Contact courant.
 	 */
 	public List<ChatRoom> getChatRooms() {
 		return chatRooms;
@@ -85,7 +93,7 @@ public class Contact {
 	/**
 	 * Getter de l'Annuaire d'un Contact.
 	 * 
-	 * @return this.annuaire L'Annuaire du Contact courant.
+	 * @return L'Annuaire du Contact courant.
 	 */
 	public Annuaire getAnnuaire() {
 		return annuaire;
@@ -94,17 +102,26 @@ public class Contact {
 	/**
 	 * Getter de l'Agenda d'un Contact.
 	 * 
-	 * @return this.agenda L'Agenda du Contact courant.
+	 * @return L'Agenda du Contact courant.
 	 */
 	public Agenda getAgenda() {
 		return agenda;
 	}
 
 	/**
+	 * Getter de la TaskList d'un Contact.
+	 * 
+	 * @return La TaskList du Contact courant.
+	 */
+	public TaskList getTaskList() {
+		return taskList;
+	}
+
+	/**
 	 * Setter de l'adresse d'un Contact.
 	 * 
 	 * @param adresse
-	 *            L'Adresse du Contact courant.
+	 *            L'Adresse d'un Contact.
 	 */
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
@@ -114,7 +131,7 @@ public class Contact {
 	 * Setter du nom d'un Contact.
 	 * 
 	 * @param nom
-	 *            Le nom du Contact courant.
+	 *            Le nom d'un Contact.
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -124,10 +141,20 @@ public class Contact {
 	 * Setter du mail d'un Contact.
 	 * 
 	 * @param mail
-	 *            Le mail du Contact courant.
+	 *            Le mail d'un Contact.
 	 */
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+	/**
+	 * Setter de la TaskList d'un Contact.
+	 * 
+	 * @param taskList
+	 *            La TaskList d'un Contact.
+	 */
+	public void setTaskList(TaskList taskList) {
+		this.taskList = taskList;
 	}
 
 	/**

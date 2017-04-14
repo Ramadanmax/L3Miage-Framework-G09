@@ -3,8 +3,15 @@ package Module_Annuaire;
 import java.util.ArrayList;
 import java.util.List;
 
+import FrameworkExceptions.FrameworkException;
 import Structure_Contact.Contact;
 
+/**
+ * Classe Annuaire, structure de l'Annuaire d'un Contact.
+ * 
+ * @author virgil
+ *
+ */
 public class Annuaire {
 
 	private List<Contact> contacts;
@@ -17,31 +24,37 @@ public class Annuaire {
 	}
 
 	/**
-	 * Ajout d'un Contact dans l'Annuaire.
+	 * Ajout d'un Contact dans l'Annuaire courant.
 	 * 
 	 * @param c
-	 *            Le contact a ajouter.
+	 *            Le Contact a ajouter.
 	 */
 	public void ajouterContact(Contact c) {
 		this.contacts.add(c);
 	}
 
 	/**
-	 * Recuperation des contacts de l'Annuaire.
+	 * Getter des Contacts d'un Annuaire.
 	 * 
-	 * @return this.contacts Les Contacts de l'Annuaire courant.
+	 * @return Les Contacts de l'Annuaire courant.
 	 */
 	public List<Contact> getContacts() {
 		return this.contacts;
 	}
 
 	/**
-	 * Suppression d'un Contact dans l'Annuaire.
+	 * Suppression d'un Contact dans l'Annuaire courant.
 	 * 
 	 * @param c
-	 *            Le contact a supprimer.
+	 *            Le Contact a supprimer.
+	 * @throws FrameworkException
 	 */
-	public void supprimerContact(Contact c) {
+	public void supprimerContact(Contact c) throws FrameworkException {
+		if (!this.contacts.contains(c)) {
+			// Le Contact n'existe pas.
+			throw new FrameworkException("Le Contact que vous essayez de supprimer n'existe pas dans cette Annuaire.");
+		}
+		// Le Contact existe.
 		this.contacts.remove(this.contacts.indexOf(c));
 	}
 
