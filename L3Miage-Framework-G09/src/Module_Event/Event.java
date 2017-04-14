@@ -1,7 +1,9 @@
 package Module_Event;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import Structure_Contact.Adresse;
 import Structure_Contact.Contact;
 
 /**
@@ -30,15 +32,15 @@ public class Event{
 	 * @see Event#getLieu()
 	 * @see Event#setLieu(String)
 */	
-	private String lieu;
+	private Adresse lieu;
 /**
-	 * La date de l'événement.
+	 * La date de l'événement. Son format int de base est le suivant : AAAAMMJJ
 	 * Cette date peut être amenée à changer.
 	 * 
 	 * @see Event#getDate()
 	 * @see Event#setDate(Date)
 */	
-	private Date date;
+	private int date;
 /**
 	 * La liste des contacts participants à l'événement.
 	 * Cette liste est amenée à changer.
@@ -57,7 +59,7 @@ public class Event{
  * @param contacts
  */
 
-	public Event(String nom, String lieu, Date date, List<Contact> contacts){
+	public Event(String nom, Adresse lieu, int date, List<Contact> contacts){
 		this.nom=nom;
 		this.lieu=lieu;
 		this.date=date;
@@ -68,34 +70,36 @@ public class Event{
  * Il peut être évident qu'un Event crée ne détienne pas encore de contacts participants.
  * @param nom
  * @param lieu
- * @param date
+ * @param i
  */
-	public Event(String nom, String lieu, Date date){
+	public Event(String nom, Adresse lieu, int i){
 		this.nom=nom;
 		this.lieu=lieu;
-		this.date=date;
+		this.date=i;
+		this.contacts = new ArrayList<Contact>();
 	}
 /**
  * Retourne le nom de l'événement.
  * @return le nom de l'événement.
  */
-	private String getNom() {
+	public String getNom() {
 		return nom;
 	}
 /**
  * Met à jour le nom de l'événement.
  * 
+ * 
  * @param nom
  * 			Le nouveau nom de l'événement.
  */
-	private void setNom(String nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 /**
  * Retourne le lieu de l'événement.
  * @return le lieu de l'événement.
  */
-	private String getLieu() {
+	public Adresse getLieu() {
 		return lieu;
 	}
 /**
@@ -103,14 +107,14 @@ public class Event{
  * @param lieu
  * 			Le nouveau lieu de l'événement.
  */
-	private void setLieu(String lieu) {
+	public void setLieu(Adresse lieu) {
 		this.lieu = lieu;
 	}
 /**
  * Retourne la date de l'événement.
  * @return la date de l'événement.
  */
-	private Date getDate() {
+	public int getDate() {
 		return date;
 	}
 /**
@@ -118,14 +122,14 @@ public class Event{
  * @param date
  * 			La nouvelle date de l'événement
  */
-	private void setDate(Date date) {
+	public void setDate(int date) {
 		this.date = date;
 	}
 /**
  * Retourne la liste de contacts participants à l'événement.
  * @return la liste de contacts participants à l'événement.
  */
-	private List<Contact> getContacts() {
+	public List<Contact> getContacts() {
 		return contacts;
 	}
 /**
@@ -133,7 +137,7 @@ public class Event{
  * @param contacts
  * 				La nouvelle liste de contacts participant à l'événement
  */
-	private void setContacts(List<Contact> contacts) {
+	public void setContacts(List<Contact> contacts) {
 		this.contacts = contacts;
 	}
 /**
@@ -141,15 +145,16 @@ public class Event{
  * @param c
  * 			Le nouveau contact à ajouter à l'événement.
  */
-	private void ajouterContact(Contact c){
+	public void ajouterContact(Contact c){
 		contacts.add(c);
 	}
 /**
  * Supprime un contact de la liste des contacts participants à l'événement.
  * @param c
  * 			Le contact à supprimer de la liste des contacts participants à l'événement.
+ * 
  */
-	private void supprimerContact(Contact c){
+	public void supprimerContact(Contact c){
 		contacts.remove(c);
 	}
 }
