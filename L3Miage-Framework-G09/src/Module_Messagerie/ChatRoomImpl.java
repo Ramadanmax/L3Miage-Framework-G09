@@ -1,9 +1,12 @@
 package Module_Messagerie;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -16,7 +19,7 @@ import Structure_Contact.Contact;
  * @author matheyt
  * 
  *         class ChatRoomImpl heritan de UnicastRemoteObject pour l'utilisation
- *         avec un RMI elle donne les outils nécéssaire à la gestion d'une
+ *         avec un RMI elle donne les outils nÃ©cÃ©ssaire Ã  la gestion d'une
  *         chatRoom
  */
 public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom {
@@ -53,7 +56,7 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	}
 
 	/**
-	 * fonction renvoyant la liste de tous les messages enregisté dans
+	 * fonction renvoyant la liste de tous les messages enregistÃ© dans
 	 * l'attribu message de la classe
 	 * 
 	 * @return messages
@@ -64,9 +67,9 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	}
 
 	/**
-	 * fonction renvoyant la liste de tous les contacts enregisté dans
-	 * l'attribu contacts de la classe représentant toutes les personne
-	 * participant à la chat room
+	 * fonction renvoyant la liste de tous les contacts enregistÃ© dans
+	 * l'attribu contacts de la classe reprÃ©sentant toutes les personne
+	 * participant Ã  la chat room
 	 * 
 	 * @return contacts
 	 */
@@ -105,25 +108,52 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 		contacts.remove(contact);
 
 	}
-	
-	public void save() 
-	{
+
+	public void save() {
 		try {
-		     DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(this.getNomChatRoom())));
-		      
-			StringBuffer  strBuff = new StringBuffer();
+			DataOutputStream dos = new DataOutputStream(
+					new BufferedOutputStream(new FileOutputStream(this.getNomChatRoom())));
+
+			StringBuffer strBuff = new StringBuffer();
 			strBuff.append(this.AfficherContacts());
 			strBuff.append("Messages : \n");
 			strBuff.append(this.AfficherMessages());
-			
+
 			dos.writeChars(strBuff.toString());
 			dos.close();
-			
+
 		} catch (FileNotFoundException e) {
-		
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-		
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void load() {
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(new File(this.getNomChatRoom())));
+
+			String line;
+			StringBuffer ln;
+			while (((line = br.readLine()) != null)) {
+				if (line.startsWith(" Messages")){System.out.println("Hellllllllllllloooooooooooooooooooooooooo");}
+				ln = new StringBuffer(line);
+				System.out.println(ln);
+			}
+			
+			while ( (line = br.readLine()) != null) {
+				ln = new StringBuffer(line);
+				
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -152,8 +182,7 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	public String AfficherContacts() {
 		String chaine = "";
 		for (int i = 0; i < this.getcontacts().size(); i++) {
-			chaine += this.getcontacts().get(i).toString() + "\n"
-					+ "######################################################\n";
+			chaine += this.getcontacts().get(i).toString() + "\n";
 		}
 		return chaine;
 	}
