@@ -29,11 +29,11 @@ public class testChatRoom {
 		//envoi de deux messages
 		Cr.envoyerMessage(new MessageTexte(c1,c2,"Hello"));
 		Cr.envoyerMessage(new MessageTexte(c2, c1, "lut"));
-		
 
-		System.out.println(Cr.AfficherMessages());
+//		System.out.println(Cr.AfficherMessages());
 		
-		//Cr.save();
+		Cr.save();
+		Cr.load();
 		
 		
 
