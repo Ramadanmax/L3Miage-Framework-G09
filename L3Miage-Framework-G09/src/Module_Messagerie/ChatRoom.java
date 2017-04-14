@@ -8,9 +8,9 @@ import Structure_Contact.Contact;
 
 public interface ChatRoom extends Remote {
 	
-	public void envoyerMessage (Message message);
+	public void envoyerMessage (MessageTexte message);
 	
-	public List<Message> getMessages ();
+	public List<MessageTexte> getMessages ();
 	
 	public List<Contact> getcontacts ();
 	

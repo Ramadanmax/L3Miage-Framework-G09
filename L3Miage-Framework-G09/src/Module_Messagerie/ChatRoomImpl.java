@@ -12,13 +12,14 @@ import Structure_Contact.Contact;
  * class ChatRoomImpl heritan de UnicastRemoteObject pour l'utilisation avec un RMI
  * elle donne les outils nécéssaire à la gestion d'une chatRoom
  */
-public class ChatRoomImpl extends UnicastRemoteObject implements ChatRoom {
+public class ChatRoomImpl /*extends UnicastRemoteObject*/ implements ChatRoom 
+{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private List<Message> messages;
+//	private static final long serialVersionUID = 1L;
+	private List<MessageTexte> messages;
 	private List<Contact> contacts;
 
 	/**
@@ -28,7 +29,7 @@ public class ChatRoomImpl extends UnicastRemoteObject implements ChatRoom {
 	 */
 	public ChatRoomImpl() throws RemoteException {
 		super();
-		messages = new ArrayList<Message>();
+		messages = new ArrayList<MessageTexte>();
 		contacts = new ArrayList<Contact>();
 	}
 
@@ -37,7 +38,7 @@ public class ChatRoomImpl extends UnicastRemoteObject implements ChatRoom {
 	 * @param un message de Type Message 
 	 */
 	@Override
-	public void envoyerMessage(Message message) {
+	public void envoyerMessage(MessageTexte message) {
 		messages.add(message);
 
 	}
@@ -46,7 +47,7 @@ public class ChatRoomImpl extends UnicastRemoteObject implements ChatRoom {
 	 * fonction renvoyant la liste de tous les messages enregisté dans l'attribu message de la classe
 	 */
 	@Override
-	public List<Message> getMessages() {
+	public List<MessageTexte> getMessages() {
 		return messages;
 	}
 
@@ -74,6 +75,38 @@ public class ChatRoomImpl extends UnicastRemoteObject implements ChatRoom {
 	public void supprimerContact(Contact contact) {
 		contacts.remove(contact);
 
+	}
+	
+	/**
+	 * fonction renvoyant un String contenant les messages dans un format simpliste
+	 * 
+	 * @return les Messges de la chat Room
+	 */
+	public String AfficherMessages() {
+		String chaine ="";
+		for (int i =0; i< this.getMessages().size(); i++)
+		{
+			chaine += this.getMessages().get(i).toString()+"\n"
+					+ "######################################################\n";
+					
+		}
+		return chaine;
+	}
+	
+	/** 
+	 * fonction renvoyant un String contenant les contacts de la chat Room
+	 * 
+	 * @return les contacts de la chat Room
+	 */
+	public String AfficherContacts()
+	{
+		String chaine = "";
+		for(int i = 0; i< this.getcontacts().size();i++)
+		{
+			chaine += this.getcontacts().get(i).toString()+"\n"
+					+ "######################################################\n";
+		}
+		return chaine;
 	}
 
 }
