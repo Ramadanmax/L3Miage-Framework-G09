@@ -20,15 +20,20 @@ public class testChatRoom {
 		Contact c2 = new Contact("Maxime Vanbossel", adresseC2, "maximevanbossel@hotmail.fr");
 		Contact c3 = new Contact("Charlotte Jondet", adresseC3, "charlottejondet@hotmail.fr");
 
-		ChatRoomImpl Cr = new ChatRoomImpl();
+		// créeation d'une chatRoom
+		ChatRoomImpl Cr = new ChatRoomImpl("test");
+		//ajout de contact à la chatRoom
 		Cr.ajouterContact(c1);
 		Cr.ajouterContact(c2);
 		
+		//envoi de deux messages
 		Cr.envoyerMessage(new MessageTexte(c1,c2,"Hello"));
 		Cr.envoyerMessage(new MessageTexte(c2, c1, "lut"));
 		
 
 		System.out.println(Cr.AfficherMessages());
+		
+		//Cr.save();
 		
 		
 

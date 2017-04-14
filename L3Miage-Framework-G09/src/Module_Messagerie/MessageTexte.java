@@ -42,11 +42,19 @@ public class MessageTexte extends Message {
 		this.contenu = contenu;
 	}
 	
+	/**
+	 * revoi une string de message sous un format simple
+	 * expediteur : XXXX
+	 * destinataire : XXXX
+	 * Date : XXXX
+	 * XXXXX
+	 * 
+	 */
 	public String toString()
 	{
 		return "expediteur : "+this.getExpediteur().getNom()+"\n"
 			+ "destinateur : "+this.getDestinataire().getNom()+"\n"
-			+ " A :"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.getDate())+"\n"
+			+ " A :"+/*new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(*/this.getDate()/*)*/+"\n"
 			+ this.getcontenu();
 	}
 }
