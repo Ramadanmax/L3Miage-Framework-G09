@@ -151,6 +151,7 @@ public class Event{
  * Supprime un contact de la liste des contacts participants à l'événement.
  * @param c
  * 			Le contact à supprimer de la liste des contacts participants à l'événement.
+ * 
  */
 	public void supprimerContact(Contact c){
 		contacts.remove(c);
