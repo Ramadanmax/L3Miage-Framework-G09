@@ -21,7 +21,7 @@ public class Decrypteur extends Securite{
 	public Decrypteur(String msgCrypte){
 		msgDecrypte = decryptage(msgCrypte);
 	}
-	
+	//
 	/**
 	 * La méthode getMsgDecrypte retourne le message décrypté
 	 * 
