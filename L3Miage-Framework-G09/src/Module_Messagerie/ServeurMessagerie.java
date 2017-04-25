@@ -7,6 +7,7 @@ import java.rmi.Naming;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 /**
  * Classe qui met en place le RMI de la messagerie coté serveur il enregistre le
@@ -26,17 +27,16 @@ public class ServeurMessagerie {
 		try {
 
 			salonDiscussion = new SalonDiscussion("chatTest");
-			LocateRegistry.createRegistry(1099);
+			Registry reg = LocateRegistry.createRegistry(1099);
 
 			String url = "rmi://" + InetAddress.getLocalHost().getHostAddress() + "/ChatRoom";
 			System.out.println("Enregistrement de l'objet avec l'url : " + url);
-			Naming.rebind(url, salonDiscussion);
+			reg.rebind(url, salonDiscussion);
 
 			System.out.println("Serveur lancé");
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
+
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
