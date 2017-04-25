@@ -24,10 +24,10 @@ public class ServeurMessagerie {
 	 */
 	public ServeurMessagerie() {
 		try {
-			LocateRegistry.createRegistry(1099);
-			System.out.println("Mise en place du Security Manager ...");
 			
-			chatRoom = new ChatRoomImpl();
+			chatRoom = new ChatRoomImpl("chatTest");
+			LocateRegistry.createRegistry(1099);
+			
 			String url = "rmi://" + InetAddress.getLocalHost().getHostAddress() + "/ChatRoom";
 			System.out.println("Enregistrement de l'objet avec l'url : " + url);
 			Naming.rebind(url, chatRoom);
@@ -52,7 +52,7 @@ public class ServeurMessagerie {
 	public ServeurMessagerie(String nomServeur) {
 		try {
 			LocateRegistry.createRegistry(1099);
-			chatRoom = new ChatRoomImpl();
+			chatRoom = new ChatRoomImpl(nomServeur);
 			String url = "rmi://" + nomServeur + "/chatRoom";
 			System.out.println("Enregistrement de l'objet avec l'url : " + url);
 			Naming.rebind(url, chatRoom);

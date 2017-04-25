@@ -22,9 +22,9 @@ import Structure_Contact.Contact;
  *         avec un RMI elle donne les outils nécéssaire à la gestion d'une
  *         chatRoom
  */
-public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom {
+public class ChatRoomImpl extends UnicastRemoteObject  implements ChatRoom {
 
-	// private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	private String nomChatRoom;
 	private List<MessageTexte> messages;
 	private List<Contact> contacts;
@@ -50,7 +50,7 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	 * @param message
 	 */
 	@Override
-	public void envoyerMessage(MessageTexte message) {
+	public void envoyerMessage(MessageTexte message) throws RemoteException {
 		messages.add(message);
 
 	}
@@ -62,7 +62,7 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	 * @return messages
 	 */
 	@Override
-	public List<MessageTexte> getMessages() {
+	public List<MessageTexte> getMessages() throws RemoteException {
 		return messages;
 	}
 
@@ -74,7 +74,7 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	 * @return contacts
 	 */
 	@Override
-	public List<Contact> getcontacts() {
+	public List<Contact> getcontacts() throws RemoteException {
 		return contacts;
 	}
 
@@ -83,7 +83,7 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	 * 
 	 * @return nomChatRoom
 	 */
-	public String getNomChatRoom() {
+	public String getNomChatRoom() throws RemoteException {
 		return this.nomChatRoom;
 	}
 
@@ -93,7 +93,7 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	 * @param contact
 	 */
 	@Override
-	public void ajouterContact(Contact contact) {
+	public void ajouterContact(Contact contact) throws RemoteException {
 		contacts.add(contact);
 	}
 
@@ -104,12 +104,12 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	 * @param contact
 	 */
 	@Override
-	public void supprimerContact(Contact contact) {
+	public void supprimerContact(Contact contact) throws RemoteException {
 		contacts.remove(contact);
 
 	}
 
-	public void save() {
+/*	public void save() {
 		try {
 			DataOutputStream dos = new DataOutputStream(
 					new BufferedOutputStream(new FileOutputStream(this.getNomChatRoom())));
@@ -164,7 +164,7 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	 * 
 	 * @return les Messges de la chat Room
 	 */
-	public String AfficherMessages() {
+/*	public String AfficherMessages() {
 		String chaine = "";
 		for (int i = 0; i < this.getMessages().size(); i++) {
 			chaine += this.getMessages().get(i).toString() + "\n"
@@ -179,12 +179,12 @@ public class ChatRoomImpl /* extends UnicastRemoteObject */ implements ChatRoom 
 	 * 
 	 * @return les contacts de la chat Room
 	 */
-	public String AfficherContacts() {
+/*	public String AfficherContacts() {
 		String chaine = "";
 		for (int i = 0; i < this.getcontacts().size(); i++) {
 			chaine += this.getcontacts().get(i).toString() + "\n";
 		}
 		return chaine;
 	}
-
+*/
 }

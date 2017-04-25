@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import Module_Messagerie.ChatRoomImpl;
 import Module_Messagerie.MessageTexte;
+import Module_Messagerie.ServeurMessagerie;
 import Structure_Contact.Adresse;
 import Structure_Contact.Contact;
 
@@ -21,19 +22,20 @@ public class testChatRoom {
 		Contact c3 = new Contact("Charlotte Jondet", adresseC3, "charlottejondet@hotmail.fr");
 
 		// créeation d'une chatRoom
-		ChatRoomImpl Cr = new ChatRoomImpl("test");
+	/*	ChatRoomImpl Cr = new ChatRoomImpl("test");
 		//ajout de contact à la chatRoom
 		Cr.ajouterContact(c1);
-		Cr.ajouterContact(c2);
+		Cr.ajouterContact(c2);*/
 		
+		ServeurMessagerie msgServ = new ServeurMessagerie();
 		//envoi de deux messages
-		Cr.envoyerMessage(new MessageTexte(c1,c2,"Hello"));
-		Cr.envoyerMessage(new MessageTexte(c2, c1, "lut"));
+	//	Cr.envoyerMessage(new MessageTexte(c1,c2,"Hello"));
+		//Cr.envoyerMessage(new MessageTexte(c2, c1, "lut"));
 
 //		System.out.println(Cr.AfficherMessages());
 		
-		Cr.save();
-		Cr.load();
+		//Cr.save();
+		//Cr.load();
 		
 		
 
