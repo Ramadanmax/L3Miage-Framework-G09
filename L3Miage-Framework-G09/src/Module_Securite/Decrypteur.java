@@ -1,17 +1,43 @@
 package Module_Securite;
 
+/**
+ * La classe Decrypteur décrypte une chaine de caractères ayant été précédemment crypté via l'utilisation de la classe Crypteur.
+ * 
+ * @version 1.0
+ * @date 25/04/2017
+ * @author Yannick Falco && Maxime Vanbossel
+ *
+ */
 public class Decrypteur extends Securite{
 	
 	private String msgDecrypte;
 	
+	/**
+	 * Le constructeur de la classe Decrypteur récupère une chaine de caractères (cryptée) et utilise la méthode decryptage 
+	 * pour décrypter cette chaine.
+	 * 
+	 * @param msgCrypte
+	 */
 	public Decrypteur(String msgCrypte){
 		msgDecrypte = decryptage(msgCrypte);
 	}
 	
+	/**
+	 * La méthode getMsgDecrypte retourne le message décrypté
+	 * 
+	 * @return msgDecrypte
+	 */
 	public String getMsgDecrypte(){
 		return msgDecrypte;
 	}
 	
+	/**
+	 * La méthode décryptage utilise les méthodes tabNbPremier, stringToChar, tabInt, tabDecrypte et charToString pour décrypter une chaine de caractères
+	 * précédemment cryptée.
+	 * 
+	 * @param message
+	 * @return charToString(decrypte)
+	 */
 	public String decryptage (String message){
 		int[] nbpremier = tabNbPremier(message);
 		char[] caractere = stringToChar(message);
@@ -20,9 +46,12 @@ public class Decrypteur extends Securite{
 		return charToString(decrypte);
 	}
 	
-	/*
-	 * Création de la clé de décryptage avec le tableau de caractère crypté 
-	 * (grâce à l'utilisation des nombres premiers)
+	/**
+	 * La méthode tabInt crée la clé de décryptage avec le tableau de caractères cryptés (grâce à l'utilisation des nombres premiers)
+	 * 
+	 * @param tabNbPremier
+	 * @param tabCrypte
+	 * @return tabInt
 	 */
 	public int[] tabInt(int[] tabNbPremier, char[] tabCrypte){
 		int a = tabCrypte.length;
@@ -43,9 +72,6 @@ public class Decrypteur extends Securite{
 				tabInt[i] = tabInt[i];
 			}
 		}
-		//for(int v=0; v<tabInt.length;v++){
-		//	System.out.println(tabInt[v]);
-		//}
 		return tabInt;
 	}
 	
@@ -53,15 +79,19 @@ public class Decrypteur extends Securite{
 	 * Transformation d'un tableau d'entier (équivalent Ascii de chaque caractère) en un tableau de caractère
 	 * après décryptage (grâce à l'utilisation des nombres premiers)
 	 */
+	/**
+	 * La méthode tabDecrypte transforme un tableau d'entiers (équivalent Ascii de chaque caractère) en un tableau de caractères
+	 * après décryptage (grâce à l'utilisation des nombres premiers)
+	 * 
+	 * @param tabInt
+	 * @return tabDecrypte
+	 */
 	public char[] tabDecrypte(int[] tabInt){
 		int a = tabInt.length;
 		char[] tabDecrypte = new char[a];
 		for(int i=0; i<a; i++){
 			tabDecrypte[i] = (char) tabInt[i];			 
 		}
-		//for(int v=0; v<tabDecrypte.length;v++){
-		//	System.out.println(tabDecrypte[v]);
-		//}
 		return tabDecrypte;
 	}
 

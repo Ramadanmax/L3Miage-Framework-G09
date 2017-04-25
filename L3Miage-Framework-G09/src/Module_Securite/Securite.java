@@ -1,19 +1,28 @@
 package Module_Securite;
 
+/**
+ * La classe Sécurité met à disposition des méthodes pour les classes Crypteur et Decrypteur. 
+ * 
+ * @version 1.0
+ * @date 25/04/2017
+ * @author Yannick Falco && Maxime Vanbossel
+ *
+ */
 public class Securite {
 	
 	/** 
+	 * La méthode tabNbPremier récupère une chaine de caractères et renvoie un tableau d'entier correspondant
+	 * aux n premiers nombres entiers. n étant le nombre de caractères dans la chaine de caractères récupérée.
 	 * 
 	 * @param message
-	 * @return
+	 * @return tabNbPremier
 	 */
-	//Renvoi les n nombre premier, n étant la longueur du message
 	public int[] tabNbPremier(String message){
 		int[] tabNbPremier = null;
 		int b = message.length();
 		tabNbPremier = new int[b]; //Création du tableau
 		tabNbPremier[0]=2; // le premier nombre premier est 2
-		int lg = 1; // nombre de nombre premier trouvé.
+		int lg = 1; // nombre de nombres premiers trouvés.
 		int i=3; // premier nombre qui va être testé.
 		for (int k=0; k<b; k++){
 			for(int j=0;j<lg;j++){
@@ -35,14 +44,14 @@ public class Securite {
 				}
 			}
 		}
-		//for(int v=0; v<tabNbPremier.length;v++){
-		//	System.out.println(tabNbPremier[v]);
-		//}
 		return tabNbPremier;
 	}
 	
-	/*
-	 * Transformation d'une chaîne de caractères en tableau de caractères
+	/**
+	 * La méthode stringToChar transforme une chaîne de caractères en un tableau de caractères
+	 * 
+	 * @param msgString
+	 * @return caractere
 	 */
 	public char[] stringToChar(String msgString){
 		int a = msgString.length();
@@ -53,8 +62,11 @@ public class Securite {
 		return caractere;
 	}
 	
-	/*
-	 * Transformation d'un tableau de caractères en chaîne de caractères
+	/**
+	 * La méthode charToString transforme un tableau de caractères en une chaîne de caractères
+	 * 
+	 * @param caractere
+	 * @return str
 	 */
 	public String charToString(char[] caractere){
 		String str = new String(caractere);
