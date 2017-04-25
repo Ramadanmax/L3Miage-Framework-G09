@@ -15,7 +15,6 @@ import Structure_Contact.Contact;
  */
 public class Annuaire implements Serializable {
 
-
 	private static final long serialVersionUID = -5041169557858836282L;
 	private List<Contact> contacts;
 

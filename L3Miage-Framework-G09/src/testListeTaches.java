@@ -1,11 +1,11 @@
 import java.util.Date;
 
-import Module_Task.Task;
-import Module_Task.TaskList;
+import Module_ListeTaches.Tache;
+import Module_ListeTaches.ListeTaches;
 import Structure_Contact.Adresse;
 import Structure_Contact.Contact;
 
-public class testTaskList {
+public class testListeTaches {
 
 	public static void main(String[] args) {
 
@@ -16,25 +16,25 @@ public class testTaskList {
 		Contact c1 = new Contact("Virgil Bontempi", adresseC1, "virgilbontempi@hotmail.fr");
 
 		// Creation de Tasks
-		Task t1 = new Task("Nourrir le chat", new Date());
-		Task t2 = new Task("Prendre une douche", new Date());
-		Task t3 = new Task("Sortir les poubelles", new Date());
-		Task t4 = new Task("Reviser (optionnel ?)", new Date());
-		Task t5 = new Task("Aller a la muscu !!!", new Date());
+		Tache t1 = new Tache("Nourrir le chat", new Date());
+		Tache t2 = new Tache("Prendre une douche", new Date());
+		Tache t3 = new Tache("Sortir les poubelles", new Date());
+		Tache t4 = new Tache("Reviser (optionnel ?)", new Date());
+		Tache t5 = new Tache("Aller a la muscu !!!", new Date());
 		
 		// Creation d'une TaskList
-		TaskList taskList = new TaskList();
-		taskList.ajouterTask(t1);
-		taskList.ajouterTask(t2);
-		taskList.ajouterTask(t3);
-		taskList.ajouterTask(t4);
-		taskList.ajouterTask(t5);
+		ListeTaches taskList = new ListeTaches();
+		taskList.ajouterTache(t1);
+		taskList.ajouterTache(t2);
+		taskList.ajouterTache(t3);
+		taskList.ajouterTache(t4);
+		taskList.ajouterTache(t5);
 		
 		// Affectation de la TaskList a un Contact
 		c1.setTaskList(taskList);
 
 		// Changement du booleen fait d'une Task
-		c1.getTaskList().getTask(t2).setFait(true);
+		c1.getTaskList().getTache(t2).setFait(true);
 		
 		// TEST DES EXCEPTIONS
 		//Task t6 = new Task("Task inexistante", new Date());

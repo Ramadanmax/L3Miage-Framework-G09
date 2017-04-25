@@ -7,25 +7,27 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
- * Classe qui permet de mettre en place le RMI du cote client en regardant dans le Naming si il trouve la class ChatRoom
- *  et L'enregistre dans une variable.
+ * Classe qui permet de mettre en place le RMI du cote client en regardant dans
+ * le Naming si il trouve la class ChatRoom et L'enregistre dans une variable.
+ * 
  * @author matheyt
  */
 public class ClientMessagerie {
 
-	private ChatRoom chatRoom;
+	private _SalonDiscussion salonDiscussion;
 
 	/**
 	 * contructeur de la classe
+	 * 
 	 * @param nomServeur
+	 *            Le nom du Serveur.
 	 */
 	public ClientMessagerie(String nomServeur) {
-
 		try {
-			Remote r = Naming.lookup("rmi://" + nomServeur + "/ChatRoom");
+			Remote remote = Naming.lookup("rmi://" + nomServeur + "/ChatRoom");
 			System.out.println("serveur ok");
-			if (r instanceof ChatRoom) {
-				this.chatRoom = (ChatRoom) r;
+			if (remote instanceof _SalonDiscussion) {
+				this.salonDiscussion = (_SalonDiscussion) remote;
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -34,11 +36,15 @@ public class ClientMessagerie {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-
 	}
-	
-	public ChatRoom getChatRoom(){
-		return this.chatRoom;
+
+	/**
+	 * Getter de la ChatRoom.
+	 * 
+	 * @return chatRoom
+	 */
+	public _SalonDiscussion getSalonDiscussion() {
+		return this.salonDiscussion;
 	}
 
 }

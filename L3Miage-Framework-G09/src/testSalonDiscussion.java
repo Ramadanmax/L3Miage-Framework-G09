@@ -2,13 +2,13 @@
 
 import java.rmi.RemoteException;
 
-import Module_Messagerie.ChatRoomImpl;
+import Module_Messagerie.SalonDiscussion;
 import Module_Messagerie.MessageTexte;
 import Module_Messagerie.ServeurMessagerie;
 import Structure_Contact.Adresse;
 import Structure_Contact.Contact;
 
-public class testChatRoom {
+public class testSalonDiscussion {
 
 	public static void main(String[] args) throws RemoteException {
 		Adresse adresseC1 = new Adresse(20, "rue des coteaux", "Marsanne", "26740", "France");
@@ -25,11 +25,11 @@ public class testChatRoom {
 		
 		ServeurMessagerie msgServ = new ServeurMessagerie();
 		
-		msgServ.getChatroom().ajouterContact(c1);
-		msgServ.getChatroom().ajouterContact(c2);
-		msgServ.getChatroom().ajouterContact(c3);
+		msgServ.getSalonDiscussion().ajouterContact(c1);
+		msgServ.getSalonDiscussion().ajouterContact(c2);
+		msgServ.getSalonDiscussion().ajouterContact(c3);
 		//envoi de deux messages
-		msgServ.getChatroom().envoyerMessage(new MessageTexte(c1,c2,"Hello"));
+		msgServ.getSalonDiscussion().envoyerMessage(new MessageTexte(c1,c2,"Hello"));
 		//Cr.envoyerMessage(new MessageTexte(c2, c1, "lut"));
 
 //		System.out.println(Cr.AfficherMessages());

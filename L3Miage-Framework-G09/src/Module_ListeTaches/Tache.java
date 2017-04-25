@@ -1,92 +1,92 @@
-package Module_Task;
+package Module_ListeTaches;
 
 import java.util.Date;
 
 /**
- * Classe Task, structure de la Task d'une TaskList.
+ * Classe Tache, structure de la Tache d'une Liste de Taches.
  * 
  * @author virgil
  *
  */
-public class Task {
+public class Tache {
 
 	private String nom;
 	private Date date;
 	private boolean fait;
 
 	/**
-	 * Constructeur d'une Task.
+	 * Constructeur d'une Tache.
 	 * 
 	 * @param nom
-	 *            Le nom d'une Task.
+	 *            Le nom d'une Tache.
 	 * @param date
-	 *            La date d'une Task.
+	 *            La date d'une Tache.
 	 */
-	public Task(String nom, Date date) {
+	public Tache(String nom, Date date) {
 		this.nom = nom;
 		this.date = date;
 		this.fait = false;
 	}
 
 	/**
-	 * Getter du nom d'une Task.
+	 * Getter du nom d'une Tache.
 	 * 
-	 * @return Le nom de la Task courante.
+	 * @return Le nom de la Tache courante.
 	 */
 	public String getNom() {
 		return nom;
 	}
 
 	/**
-	 * Getter de la date d'une Task.
+	 * Getter de la date d'une Tache.
 	 * 
-	 * @return La date de la Task courante.
+	 * @return La date de la Tache courante.
 	 */
 	public Date getDate() {
 		return date;
 	}
 
 	/**
-	 * Getter du booleen fait d'une Task.
+	 * Getter du booleen fait d'une Tache.
 	 * 
-	 * @return Le booleen fait de la Task courante.
+	 * @return Le booleen fait de la Tache courante.
 	 */
 	public boolean getFait() {
 		return fait;
 	}
 
 	/**
-	 * Setter du nom d'une Task.
+	 * Setter du nom d'une Tache.
 	 * 
 	 * @param nom
-	 *            Le nom d'une Task.
+	 *            Le nom d'une Tache.
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
-	 * Setter de la date d'une Task.
+	 * Setter de la date d'une Tache.
 	 * 
 	 * @param date
-	 *            La date d'une Task.
+	 *            La date d'une Tache.
 	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
 	/**
-	 * Setter du booleen fait d'une Task.
+	 * Setter du booleen fait d'une Tache.
 	 * 
 	 * @param fait
-	 *            Le booleen fait d'une Task.
+	 *            Le booleen fait d'une Tache.
 	 */
 	public void setFait(boolean fait) {
 		this.fait = fait;
 	}
 
 	/**
-	 * Methode toString d'une Task.
+	 * Methode toString d'une Tache.
 	 */
 	public String toString() {
 		String statut = "A Faire";
@@ -94,7 +94,7 @@ public class Task {
 		if (this.fait) {
 			statut = "Fait";
 		}
-		
+
 		return this.nom + ", " + this.date + ", " + statut;
 	}
 }

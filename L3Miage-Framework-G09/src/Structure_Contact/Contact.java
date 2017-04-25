@@ -6,9 +6,9 @@ import java.util.List;
 
 import FrameworkExceptions.FrameworkException;
 import Module_Annuaire.Annuaire;
-import Module_Event.Agenda;
-import Module_Messagerie.ChatRoom;
-import Module_Task.TaskList;
+import Module_Evenement.Agenda;
+import Module_ListeTaches.ListeTaches;
+import Module_Messagerie._SalonDiscussion;
 
 /**
  * Classe Contact, structure d'une personne.
@@ -16,20 +16,17 @@ import Module_Task.TaskList;
  * @author virgil
  *
  */
-public class Contact implements Serializable{
+public class Contact implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3597050801817464921L;
 	private String nom;
 	private Adresse adresse;
 	private String mail;
 
-	private List<ChatRoom> chatRooms;
+	private List<_SalonDiscussion> chatRooms;
 	private Annuaire annuaire;
 	private Agenda agenda;
-	private TaskList taskList;
+	private ListeTaches taskList;
 
 	/**
 	 * Constructeur d'un Contact.
@@ -47,8 +44,8 @@ public class Contact implements Serializable{
 		this.adresse = adresse;
 		this.annuaire = new Annuaire();
 		this.agenda = new Agenda();
-		this.chatRooms = new ArrayList<ChatRoom>();
-		this.taskList = new TaskList();
+		this.chatRooms = new ArrayList<_SalonDiscussion>();
+		this.taskList = new ListeTaches();
 
 		// Verification de la validite du mail
 		if (!mail.matches(
@@ -91,7 +88,7 @@ public class Contact implements Serializable{
 	 * 
 	 * @return La liste de ChatRoom du Contact courant.
 	 */
-	public List<ChatRoom> getChatRooms() {
+	public List<_SalonDiscussion> getChatRooms() {
 		return chatRooms;
 	}
 
@@ -118,7 +115,7 @@ public class Contact implements Serializable{
 	 * 
 	 * @return La TaskList du Contact courant.
 	 */
-	public TaskList getTaskList() {
+	public ListeTaches getTaskList() {
 		return taskList;
 	}
 
@@ -158,7 +155,7 @@ public class Contact implements Serializable{
 	 * @param taskList
 	 *            La TaskList d'un Contact.
 	 */
-	public void setTaskList(TaskList taskList) {
+	public void setTaskList(ListeTaches taskList) {
 		this.taskList = taskList;
 	}
 

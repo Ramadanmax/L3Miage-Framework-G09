@@ -17,20 +17,20 @@ import java.rmi.registry.LocateRegistry;
  */
 public class ServeurMessagerie {
 
-	private ChatRoomImpl chatRoom;
+	private SalonDiscussion salonDiscussion;
 
 	/**
 	 * constructeur simple de la classe
 	 */
 	public ServeurMessagerie() {
 		try {
-			
-			chatRoom = new ChatRoomImpl("chatTest");
+
+			salonDiscussion = new SalonDiscussion("chatTest");
 			LocateRegistry.createRegistry(1099);
-			
+
 			String url = "rmi://" + InetAddress.getLocalHost().getHostAddress() + "/ChatRoom";
 			System.out.println("Enregistrement de l'objet avec l'url : " + url);
-			Naming.rebind(url, chatRoom);
+			Naming.rebind(url, salonDiscussion);
 
 			System.out.println("Serveur lancé");
 		} catch (RemoteException e) {
@@ -42,20 +42,20 @@ public class ServeurMessagerie {
 		}
 	}
 
-
 	/**
 	 * construteur de la classe qui prend le nom du serveur sur lequel il sera
 	 * lancé, pour l'enregistrer
 	 * 
 	 * @param nomServeur
+	 *            Le nom du Serveur.
 	 */
 	public ServeurMessagerie(String nomServeur) {
 		try {
 			LocateRegistry.createRegistry(1099);
-			chatRoom = new ChatRoomImpl(nomServeur);
+			salonDiscussion = new SalonDiscussion(nomServeur);
 			String url = "rmi://" + nomServeur + "/chatRoom";
 			System.out.println("Enregistrement de l'objet avec l'url : " + url);
-			Naming.rebind(url, chatRoom);
+			Naming.rebind(url, salonDiscussion);
 			System.out.println("Serveur lancé");
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -67,9 +67,9 @@ public class ServeurMessagerie {
 	/**
 	 * fonction qui renvoi la chatRoom enregistrer en attribut
 	 * 
-	 * @return chatRoom
+	 * @return chatRoom La ChatRoom du Serveur courant.
 	 */
-	public ChatRoomImpl getChatroom() {
-		return this.chatRoom;
+	public SalonDiscussion getSalonDiscussion() {
+		return this.salonDiscussion;
 	}
 }

@@ -10,10 +10,6 @@ import java.io.Serializable;
  */
 public class Adresse implements Serializable {
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8176741803008839719L;
 	public int numRue;
 	public String nomRue;
