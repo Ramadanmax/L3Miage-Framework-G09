@@ -1,5 +1,6 @@
 package Module_Annuaire;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,10 @@ import Structure_Contact.Contact;
  * @author virgil
  *
  */
-public class Annuaire {
+public class Annuaire implements Serializable {
 
+
+	private static final long serialVersionUID = -5041169557858836282L;
 	private List<Contact> contacts;
 
 	/**

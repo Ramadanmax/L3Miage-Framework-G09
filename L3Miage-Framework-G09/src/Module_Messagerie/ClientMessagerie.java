@@ -23,7 +23,7 @@ public class ClientMessagerie {
 
 		try {
 			Remote r = Naming.lookup("rmi://" + nomServeur + "/ChatRoom");
-			System.out.println(r);
+			System.out.println("serveur ok");
 			if (r instanceof ChatRoom) {
 				this.chatRoom = (ChatRoom) r;
 			}

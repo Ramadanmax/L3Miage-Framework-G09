@@ -1,13 +1,20 @@
 package Structure_Contact;
 
+import java.io.Serializable;
+
 /**
  * Classe Adresse, structure de l'Adresse d'un Contact.
  * 
  * @author virgil
  *
  */
-public class Adresse {
+public class Adresse implements Serializable {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8176741803008839719L;
 	public int numRue;
 	public String nomRue;
 	public String ville;

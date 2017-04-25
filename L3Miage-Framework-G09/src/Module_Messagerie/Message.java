@@ -1,11 +1,14 @@
 package Module_Messagerie;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import Structure_Contact.Contact;
 
-public abstract class Message {
+public abstract class Message implements Serializable{
 	
+
+	private static final long serialVersionUID = 1L;
 	protected Date date;
 	protected Contact expediteur;
 	protected Contact destinataire;

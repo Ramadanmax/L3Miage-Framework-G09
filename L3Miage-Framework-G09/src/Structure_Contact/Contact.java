@@ -1,5 +1,6 @@
 package Structure_Contact;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +16,12 @@ import Module_Task.TaskList;
  * @author virgil
  *
  */
-public class Contact {
+public class Contact implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3597050801817464921L;
 	private String nom;
 	private Adresse adresse;
 	private String mail;

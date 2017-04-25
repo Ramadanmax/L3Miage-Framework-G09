@@ -1,5 +1,6 @@
 package Module_Event;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,11 @@ import java.util.List;
  * @date 13/04/2017
  * @author Maxime RAMADANOSKI
  */
-public class Agenda {
+public class Agenda implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4360089665096308659L;
 	/**
 	 * La liste d'événements constituant un agenda.
 	 * Cette liste est sujette à modifications.

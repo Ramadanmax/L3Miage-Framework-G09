@@ -1,5 +1,6 @@
 package Module_Task;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,12 @@ import FrameworkExceptions.FrameworkException;
  * @author virgil
  *
  */
-public class TaskList {
+public class TaskList  implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -403307245786356963L;
 	private List<Task> tasks;
 
 	/**
