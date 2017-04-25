@@ -2,7 +2,7 @@ import Module_Messagerie.ClientMessagerie;
 import Module_Messagerie.MessageTexte;
 
 public class testClientCSalonDiscussion {
-
+//
 	public static void main(String[] args) throws Exception {
 		
 		ClientMessagerie client = new ClientMessagerie("130.190.61.46");
