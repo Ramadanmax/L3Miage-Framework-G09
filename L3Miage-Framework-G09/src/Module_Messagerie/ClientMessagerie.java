@@ -26,8 +26,10 @@ public class ClientMessagerie {
 	 */
 	public ClientMessagerie(String nomServeur) {
 		try {
-			LocateRegistry.getRegistry(nomServeur, 1099);
-			Remote remote = Naming.lookup("rmi://" + nomServeur + "/ChatRoom");
+			System.setProperty("java.security.policy","file:./security.policy");
+
+			Registry reg = LocateRegistry.getRegistry(nomServeur, 1099);
+			Remote remote = reg.lookup("rmi://" + nomServeur + "/ChatRoom");
 			System.out.println("serveur ok");
 			if (remote instanceof _SalonDiscussion) {
 				this.salonDiscussion = (_SalonDiscussion) remote;
@@ -35,9 +37,6 @@ public class ClientMessagerie {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
-			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
