@@ -2,11 +2,13 @@ package Module_Messagerie;
 
 import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.net.SocketPermission;
 import java.net.UnknownHostException;
 import java.rmi.Naming;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 /**
  * Classe qui met en place le RMI de la messagerie coté serveur il enregistre le
@@ -24,20 +26,23 @@ public class ServeurMessagerie {
 	 */
 	public ServeurMessagerie() {
 		try {
+			System.setProperty("java.security.policy","file:./security.policy");
 
+			
 			salonDiscussion = new SalonDiscussion("chatTest");
 			LocateRegistry.createRegistry(1099);
-
 			String url = "rmi://" + InetAddress.getLocalHost().getHostAddress() + "/ChatRoom";
 			System.out.println("Enregistrement de l'objet avec l'url : " + url);
 			Naming.rebind(url, salonDiscussion);
 
-			System.out.println("Serveur lancé");
+			System.out.println("Serveur lancee");
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
+
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
