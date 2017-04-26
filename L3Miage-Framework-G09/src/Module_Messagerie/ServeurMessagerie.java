@@ -32,7 +32,7 @@ public class ServeurMessagerie {
 
 			
 			salonDiscussion = new SalonDiscussion("chatTest");
-			Registry reg = LocateRegistry.createRegistry(1099);
+			Registry reg = LocateRegistry.createRegistry(5555);
 			String url = "rmi://" + InetAddress.getLocalHost().getHostAddress() + "/ChatRoom";
 			System.out.println("Enregistrement de l'objet avec l'url : " + url);
 			reg.rebind(url, salonDiscussion);

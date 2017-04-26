@@ -1,6 +1,8 @@
 package Module_Messagerie;
 
+import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.net.UnknownHostException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
@@ -28,7 +30,7 @@ public class ClientMessagerie {
 		try {
 			System.setProperty("java.security.policy","file:./security.policy");
 
-			Registry reg = LocateRegistry.getRegistry(nomServeur, 1099);
+			Registry reg = LocateRegistry.getRegistry(InetAddress.getLocalHost().getHostAddress(), 5555);
 			Remote remote = reg.lookup("rmi://" + nomServeur + "/ChatRoom");
 			System.out.println("serveur ok");
 			if (remote instanceof _SalonDiscussion) {
@@ -37,6 +39,8 @@ public class ClientMessagerie {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
 	}
