@@ -5,7 +5,7 @@ public class testClientCSalonDiscussion {
 //
 	public static void main(String[] args) throws Exception {
 		
-		ClientMessagerie client = new ClientMessagerie("192.168.137.1");
+		ClientMessagerie client = new ClientMessagerie("192.168.137.2");
 		MessageTexte message = new MessageTexte(client.getSalonDiscussion().getcontacts().get(0), client.getSalonDiscussion().getcontacts().get(1), "lut");
 		client.getSalonDiscussion().envoyerMessage(message);
 		System.out.println(client.getSalonDiscussion().getMessages());

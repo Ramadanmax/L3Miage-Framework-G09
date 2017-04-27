@@ -40,24 +40,6 @@ public class PageAuthentification {
 	}
 
 	/**
-	 * Create the application.
-	 */
-	public PageAuthentification() {
-		initialize();
-		Authentification authI = new Authentification(textField_Identifiant.toString(),passwordField.toString());
-		
-		Crypteur crypt = new Crypteur(passwordField.toString());
-		// crypt.getMsgCrypte() -> Mot de passe crypté
-		
-		Authentification authF = new Authentification(textField_Identifiant.toString(),pwdCrypte);
-		authF.reconnaissance();
-		if(authF.getValide()){
-			//fermer GUI à distance
-			//ouvrir interface utilisateur à distance
-		}
-	}
-
-	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {

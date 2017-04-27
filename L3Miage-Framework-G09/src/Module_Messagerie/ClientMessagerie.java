@@ -30,7 +30,7 @@ public class ClientMessagerie {
 		try {
 			System.setProperty("java.security.policy","file:./security.policy");
 
-			Registry reg = LocateRegistry.getRegistry(InetAddress.getLocalHost().getHostAddress(), 5555);
+			Registry reg = LocateRegistry.getRegistry(/*InetAddress.getLocalHost().getHostAddress()*/nomServeur, 5555);
 			Remote remote = reg.lookup("rmi://" + nomServeur + "/ChatRoom");
 			System.out.println("serveur ok");
 			if (remote instanceof _SalonDiscussion) {
@@ -40,9 +40,9 @@ public class ClientMessagerie {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
 			e.printStackTrace();
-		} catch (UnknownHostException e) {
+		}/* catch (UnknownHostException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	/**
