@@ -38,7 +38,7 @@ public class Crypteur extends Securite {
 	 * @param message
 	 * @return charToString(crypte)
 	 */
-	public String cryptage(String message) {
+	private String cryptage(String message) {
 		int[] nbpremier = tabNbPremier(message);
 		int[] ascii = tabAscii(message);
 		char[] crypte = tabCrypte(ascii, nbpremier);

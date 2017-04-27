@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
+
+import Module_Securite.Authentification;
+import Module_Securite.Crypteur;
+
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -40,6 +44,17 @@ public class PageAuthentification {
 	 */
 	public PageAuthentification() {
 		initialize();
+		Authentification authI = new Authentification(textField_Identifiant.toString(),passwordField.toString());
+		
+		Crypteur crypt = new Crypteur(passwordField.toString());
+		// crypt.getMsgCrypte() -> Mot de passe crypté
+		
+		Authentification authF = new Authentification(textField_Identifiant.toString(),pwdCrypte);
+		authF.reconnaissance();
+		if(authF.getValide()){
+			//fermer GUI à distance
+			//ouvrir interface utilisateur à distance
+		}
 	}
 
 	/**

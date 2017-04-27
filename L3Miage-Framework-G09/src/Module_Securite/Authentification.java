@@ -32,7 +32,11 @@ public class Authentification {
 	 * @param pwd
 	 * @param cheminXML
 	 */
-
+	public Authentification(String identifiant, String pwd) {
+		valide = false;
+		this.identifiant = identifiant;
+		this.motDePasse = pwd;
+	}
 	public Authentification(String identifiant, String pwd, File cheminXML) {
 		valide = false;
 		this.identifiant = identifiant;
@@ -49,7 +53,7 @@ public class Authentification {
 	 * @return valide
 	 * @throws FrameworkException
 	 */
-	boolean reconnaissance() throws FrameworkException {
+	public boolean reconnaissance() throws FrameworkException {
 		try {
 
 			// analyse du document
@@ -122,5 +126,12 @@ public class Authentification {
 	 */
 	public void setCheminXML(File cheminXML) {
 		this.cheminXML = cheminXML;
+	}
+	/**
+	 * La méthode getValide retourne l'état de connexion. S'il est vrai, l'utilisateur est connecté, sinon il ne l'est pas.
+	 * @return valide
+	 */
+	public boolean getValide(){
+		return valide;
 	}
 }

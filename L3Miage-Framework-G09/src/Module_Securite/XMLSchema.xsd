@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   targetNamespace="http://frameworkg9.fr/contact"
+		   elementFormDefault="qualified">
   <xs:element name="users">
     <xs:complexType>
       <xs:sequence>
@@ -9,6 +11,9 @@
               <xs:element type="xs:string" name="ID"/>
               <xs:element type="xs:string" name="login"/>
               <xs:element type="xs:string" name="pwd"/>
+              <xs:element type="xs:string" name="nom"/>
+              <xs:element type="xs:string" name="adresse"/>
+              <xs:element type="xs:string" name="mail"/>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
