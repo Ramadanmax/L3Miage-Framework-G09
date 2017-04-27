@@ -62,9 +62,9 @@ public class Menu {
 		btn_ListeDesContacts.setBounds(26, 182, 300, 50);
 		frame.getContentPane().add(btn_ListeDesContacts);
 		
-		JButton btn_ConsulterMesMessages = new JButton("Consulter mes messages");
-		btn_ConsulterMesMessages.setBounds(26, 244, 300, 50);
-		frame.getContentPane().add(btn_ConsulterMesMessages);
+		JButton btn_ConsulterMaMessagerie = new JButton("Consulter ma messagerie");
+		btn_ConsulterMaMessagerie.setBounds(26, 244, 300, 50);
+		frame.getContentPane().add(btn_ConsulterMaMessagerie);
 		
 		JButton btn_Deconnexion = new JButton("Deconnexion");
 		btn_Deconnexion.setBounds(201, 320, 125, 35);

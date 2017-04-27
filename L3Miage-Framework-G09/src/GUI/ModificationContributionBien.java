@@ -11,10 +11,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-public class CreationContributionProduit {
+public class ModificationContributionBien {
 
 	private JFrame frame;
-	private JTextField textField_Unite;
 
 	/**
 	 * Launch the application.
@@ -23,7 +22,7 @@ public class CreationContributionProduit {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CreationContributionProduit window = new CreationContributionProduit();
+					ModificationContributionBien window = new ModificationContributionBien();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +34,7 @@ public class CreationContributionProduit {
 	/**
 	 * Create the application.
 	 */
-	public CreationContributionProduit() {
+	public ModificationContributionBien() {
 		initialize();
 	}
 
@@ -49,7 +48,7 @@ public class CreationContributionProduit {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btn_Retour = new JButton("Retour");
-		btn_Retour.setBounds(203, 323, 125, 35);
+		btn_Retour.setBounds(112, 320, 125, 35);
 		frame.getContentPane().add(btn_Retour);
 		
 		JLabel lbl_MyEwine = new JLabel("My eWine");
@@ -57,9 +56,9 @@ public class CreationContributionProduit {
 		lbl_MyEwine.setBounds(133, 12, 80, 26);
 		frame.getContentPane().add(lbl_MyEwine);
 		
-		JLabel lbl_ContributionProduit = new JLabel("Contribution d'un produit");
-		lbl_ContributionProduit.setBounds(96, 50, 167, 14);
-		frame.getContentPane().add(lbl_ContributionProduit);JLabel lbl_Nom = new JLabel("Nom");
+		JLabel lbl_ModificationContributionBien = new JLabel("Modification de la contribution d'un bien");
+		lbl_ModificationContributionBien.setBounds(59, 42, 251, 14);
+		frame.getContentPane().add(lbl_ModificationContributionBien);JLabel lbl_Nom = new JLabel("Nom");
 		lbl_Nom.setFont(new Font("Dialog", Font.BOLD, 14));
 		lbl_Nom.setBounds(41, 94, 35, 14);
 		frame.getContentPane().add(lbl_Nom);
@@ -75,6 +74,7 @@ public class CreationContributionProduit {
 		frame.getContentPane().add(lbl_ValeurFinanciere);
 		
 		JTextField textField_Nom = new JTextField();
+		textField_Nom.setEditable(false);
 		textField_Nom.setBounds(83, 93, 213, 18);
 		frame.getContentPane().add(textField_Nom);
 		textField_Nom.setColumns(10);
@@ -84,17 +84,17 @@ public class CreationContributionProduit {
 		textField_Quantite.setBounds(83, 118, 90, 18);
 		frame.getContentPane().add(textField_Quantite);
 		
-		JTextField textField_Lieu = new JTextField();
-		textField_Lieu.setColumns(10);
-		textField_Lieu.setBounds(146, 144, 150, 18);
-		frame.getContentPane().add(textField_Lieu);
+		JTextField textField_ValeurFinanciere = new JTextField();
+		textField_ValeurFinanciere.setColumns(10);
+		textField_ValeurFinanciere.setBounds(146, 144, 150, 18);
+		frame.getContentPane().add(textField_ValeurFinanciere);
 		
 		JLabel lbl_Unite = new JLabel("Unite");
 		lbl_Unite.setFont(new Font("Dialog", Font.BOLD, 14));
 		lbl_Unite.setBounds(191, 119, 46, 14);
 		frame.getContentPane().add(lbl_Unite);
 		
-		textField_Unite = new JTextField();
+		JTextField textField_Unite = new JTextField();
 		textField_Unite.setColumns(10);
 		textField_Unite.setBounds(231, 118, 65, 18);
 		frame.getContentPane().add(textField_Unite);
@@ -115,8 +115,12 @@ public class CreationContributionProduit {
 		frame.getContentPane().add(lbl_Description);
 
 		JButton btn_Valider = new JButton("Valider");
-		btn_Valider.setBounds(12, 323, 125, 35);
+		btn_Valider.setBounds(26, 281, 100, 30);
 		frame.getContentPane().add(btn_Valider);
+		
+		JButton btn_Supprimer = new JButton("Supprimer");
+		btn_Supprimer.setBounds(196, 281, 100, 30);
+		frame.getContentPane().add(btn_Supprimer);
 	}
 
 }

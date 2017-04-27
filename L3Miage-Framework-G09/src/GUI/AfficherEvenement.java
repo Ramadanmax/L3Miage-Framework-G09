@@ -120,6 +120,7 @@ public class AfficherEvenement {
 		frame.getContentPane().add(lbl_Participants);
 		
 		table_Participants = new JTable();
+		table_Participants.setBorder(UIManager.getBorder("TextField.border"));
 		table_Participants.setBounds(121, 281, 175, 100);
 		frame.getContentPane().add(table_Participants);
 	}

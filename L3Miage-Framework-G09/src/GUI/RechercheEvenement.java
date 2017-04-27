@@ -47,7 +47,7 @@ public class RechercheEvenement {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btn_Retour = new JButton("Retour");
-		btn_Retour.setBounds(203, 323, 125, 35);
+		btn_Retour.setBounds(112, 320, 125, 35);
 		frame.getContentPane().add(btn_Retour);
 		
 		JLabel lbl_MyEwine = new JLabel("My eWine");

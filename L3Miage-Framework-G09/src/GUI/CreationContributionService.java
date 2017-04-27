@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-public class ModificationEvenement {
+public class CreationContributionService {
 
 	private JFrame frame;
 
@@ -22,7 +22,7 @@ public class ModificationEvenement {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificationEvenement window = new ModificationEvenement();
+					CreationContributionService window = new CreationContributionService();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class ModificationEvenement {
 	/**
 	 * Create the application.
 	 */
-	public ModificationEvenement() {
+	public CreationContributionService() {
 		initialize();
 	}
 
@@ -48,69 +48,56 @@ public class ModificationEvenement {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btn_Retour = new JButton("Retour");
-		btn_Retour.setBounds(112, 320, 125, 35);
+		btn_Retour.setBounds(203, 323, 125, 35);
 		frame.getContentPane().add(btn_Retour);
-
+		
 		JLabel lbl_MyEwine = new JLabel("My eWine");
 		lbl_MyEwine.setFont(new Font("Dialog", Font.BOLD, 16));
 		lbl_MyEwine.setBounds(133, 12, 80, 26);
 		frame.getContentPane().add(lbl_MyEwine);
-
-		JLabel lbl_ModificationDEvenement = new JLabel("Modification d'événement");
-		lbl_ModificationDEvenement.setBounds(96, 51, 147, 14);
-		frame.getContentPane().add(lbl_ModificationDEvenement);
+		
+		JLabel lbl_ContributionService = new JLabel("Contribution d'un service");
+		lbl_ContributionService.setBounds(96, 50, 167, 14);
+		frame.getContentPane().add(lbl_ContributionService);
+		
 		JLabel lbl_Nom = new JLabel("Nom");
 		lbl_Nom.setFont(new Font("Dialog", Font.BOLD, 14));
-		lbl_Nom.setBounds(79, 98, 35, 14);
+		lbl_Nom.setBounds(41, 94, 35, 14);
 		frame.getContentPane().add(lbl_Nom);
-
-		JLabel lbl_Date = new JLabel("Date");
-		lbl_Date.setFont(new Font("Dialog", Font.BOLD, 14));
-		lbl_Date.setBounds(79, 119, 35, 14);
-		frame.getContentPane().add(lbl_Date);
-
-		JLabel lbl_Lieu = new JLabel("Lieu");
-		lbl_Lieu.setFont(new Font("Dialog", Font.BOLD, 14));
-		lbl_Lieu.setBounds(79, 145, 35, 14);
-		frame.getContentPane().add(lbl_Lieu);
-
-		JLabel lbl_Description = new JLabel("Description");
-		lbl_Description.setFont(new Font("Dialog", Font.BOLD, 14));
-		lbl_Description.setBounds(26, 171, 88, 14);
-		frame.getContentPane().add(lbl_Description);
-
+		
+		JLabel lbl_ValeurFinanciere = new JLabel("Valeur financière");
+		lbl_ValeurFinanciere.setFont(new Font("Dialog", Font.BOLD, 14));
+		lbl_ValeurFinanciere.setBounds(12, 118, 136, 14);
+		frame.getContentPane().add(lbl_ValeurFinanciere);
+		
 		JTextField textField_Nom = new JTextField();
-		textField_Nom.setEditable(false);
-		textField_Nom.setBounds(121, 94, 175, 18);
+		textField_Nom.setBounds(83, 93, 213, 18);
 		frame.getContentPane().add(textField_Nom);
 		textField_Nom.setColumns(10);
-
-		JTextField textField_Date = new JTextField();
-		textField_Date.setColumns(10);
-		textField_Date.setBounds(121, 118, 175, 18);
-		frame.getContentPane().add(textField_Date);
-
-		JTextField textField_Lieu = new JTextField();
-		textField_Lieu.setColumns(10);
-		textField_Lieu.setBounds(121, 144, 175, 18);
-		frame.getContentPane().add(textField_Lieu);
-
+		
+		JTextField textField_ValeurFinanciere = new JTextField();
+		textField_ValeurFinanciere.setColumns(10);
+		textField_ValeurFinanciere.setBounds(146, 118, 150, 18);
+		frame.getContentPane().add(textField_ValeurFinanciere);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(null);
-		scrollPane.setBounds(121, 172, 175, 100);
+		scrollPane.setBounds(121, 145, 175, 100);
 		frame.getContentPane().add(scrollPane);
-
+		
 		JTextArea textArea_Description = new JTextArea();
 		scrollPane.setViewportView(textArea_Description);
 		textArea_Description.setBorder(UIManager.getBorder("TextField.border"));
 		textArea_Description.setLineWrap(true);
+		
+		JLabel lbl_Description = new JLabel("Description");
+		lbl_Description.setFont(new Font("Dialog", Font.BOLD, 14));
+		lbl_Description.setBounds(26, 145, 88, 14);
+		frame.getContentPane().add(lbl_Description);
 
 		JButton btn_Valider = new JButton("Valider");
-		btn_Valider.setBounds(26, 281, 100, 30);
+		btn_Valider.setBounds(12, 323, 125, 35);
 		frame.getContentPane().add(btn_Valider);
-		
-		JButton btn_Supprimer = new JButton("Supprimer");
-		btn_Supprimer.setBounds(196, 281, 100, 30);
-		frame.getContentPane().add(btn_Supprimer);
 	}
+
 }
