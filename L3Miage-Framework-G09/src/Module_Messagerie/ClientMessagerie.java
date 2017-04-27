@@ -16,15 +16,18 @@ public class ClientMessagerie {
 	private _SalonDiscussion salonDiscussion;
 
 	/**
-	 * contructeur de la classe
+	 * contructeur de la classe qui va chercher l'objet salon de discution
+	 * enregistrer dans le registre passer en parametre
 	 * 
 	 * @param nomServeur
-	 *            Le nom du Serveur.
+	 * 				le nomdu Serveur (IP)
+	 * @param reg
+	 * 				le Registre d'enregistrement
 	 */
-	public ClientMessagerie(String nomServeur, Registry reg) {
+	public ClientMessagerie(String nomServeur,String nomSalon, Registry reg) {
 		try {
 			System.setProperty("java.security.policy", "file:./security.policy");
-			Remote remote = reg.lookup("rmi://" + nomServeur + "/ChatRoom");
+			Remote remote = reg.lookup("rmi://" + nomServeur + nomSalon);
 			System.out.println("serveur ok");
 			if (remote instanceof _SalonDiscussion) {
 				this.salonDiscussion = (_SalonDiscussion) remote;
