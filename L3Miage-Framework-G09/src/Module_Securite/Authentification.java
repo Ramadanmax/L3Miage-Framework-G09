@@ -1,8 +1,6 @@
 package Module_Securite;
 
 import java.io.File;
-import java.io.Serializable;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -18,7 +16,8 @@ import FrameworkExceptions.FrameworkException;
  * @author Yannick Falco && Maxime Vanbossel
  *
  */
-public class Authentification implements Serializable{
+//
+public class Authentification {
 
 	private String identifiant;
 	private String motDePasse;
@@ -34,13 +33,19 @@ public class Authentification implements Serializable{
 	 * @param pwd
 	 * @param cheminXML
 	 */
+	public Authentification(){
+		this.identifiant="";
+		this.motDePasse="";
+		this.valide = false;
+		
+	}
 	public Authentification(String identifiant, String pwd) {
-		valide = false;
+		this.valide = false;
 		this.identifiant = identifiant;
 		this.motDePasse = pwd;
 	}
 	public Authentification(String identifiant, String pwd, File cheminXML) {
-		valide = false;
+		this.valide = false;
 		this.identifiant = identifiant;
 		this.motDePasse = pwd;
 		this.cheminXML = cheminXML;
@@ -69,6 +74,32 @@ public class Authentification implements Serializable{
 				if (identifiant.equals(document.getElementsByTagName("login").item(i).getTextContent())
 						&& motDePasse.equals(document.getElementsByTagName("pwd").item(i).getTextContent())) {
 					valide = true;
+				}
+
+			}
+			if (!valide) {
+				throw new FrameworkException("Les identifiants fournis sont invalides.");
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return valide;
+	}
+	public boolean reconnaissance(String login, String mdp) throws FrameworkException {
+		try {
+
+			// analyse du document
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+
+			// récupération de la structure objet du document
+			Document document = docBuilder.parse(cheminXML);
+
+			for (int i = 0; i < document.getElementsByTagName("login").getLength(); i++) {
+				if (login.equals(document.getElementsByTagName("login").item(i).getTextContent())
+						&& mdp.equals(document.getElementsByTagName("pwd").item(i).getTextContent())) {
+					this.valide = true;
 				}
 
 			}
