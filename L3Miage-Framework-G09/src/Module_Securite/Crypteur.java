@@ -1,5 +1,7 @@
 package Module_Securite;
 
+import java.io.Serializable;
+
 /**
  * La classe Crypteur crypte une chaine de caractères
  * 
@@ -8,7 +10,7 @@ package Module_Securite;
  * @author Yannick Falco && Maxime Vanbossel
  *
  */
-public class Crypteur extends Securite {
+public class Crypteur extends Securite implements Serializable{
 
 	private String msgCrypte;
 

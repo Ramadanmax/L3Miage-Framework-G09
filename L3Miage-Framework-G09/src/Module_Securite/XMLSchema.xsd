@@ -5,15 +5,30 @@
   <xs:element name="users">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="user">
+        <xs:element name="user" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
-              <xs:element type="xs:string" name="ID"/>
+              <xs:element type="xs:byte" name="ID"/>
               <xs:element type="xs:string" name="login"/>
               <xs:element type="xs:string" name="pwd"/>
               <xs:element type="xs:string" name="nom"/>
               <xs:element type="xs:string" name="adresse"/>
               <xs:element type="xs:string" name="mail"/>
+              <xs:element name="messages">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="message">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="destinataire"/>
+                          <xs:element type="xs:string" name="date"/>
+                          <xs:element type="xs:string" name="contenu"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -21,4 +36,5 @@
     </xs:complexType>
   </xs:element>
 </xs:schema>
+
 

@@ -1,6 +1,8 @@
 package Module_Securite;
 
 import java.io.File;
+import java.io.Serializable;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -16,7 +18,7 @@ import FrameworkExceptions.FrameworkException;
  * @author Yannick Falco && Maxime Vanbossel
  *
  */
-public class Authentification {
+public class Authentification implements Serializable{
 
 	private String identifiant;
 	private String motDePasse;
