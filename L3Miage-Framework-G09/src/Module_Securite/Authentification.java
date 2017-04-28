@@ -29,18 +29,18 @@ public class Authentification {
 	 * fournit.
 	 * 
 	 * @param identifiant
-	 * @param pwd
+	 * @param motDePasse
 	 * @param cheminXML
 	 */
-	public Authentification(String identifiant, String pwd) {
+	public Authentification(String identifiant, String motDePasse) {
 		valide = false;
 		this.identifiant = identifiant;
-		this.motDePasse = pwd;
+		this.motDePasse = motDePasse;
 	}
-	public Authentification(String identifiant, String pwd, File cheminXML) {
+	public Authentification(String identifiant, String motDePasse, File cheminXML) {
 		valide = false;
 		this.identifiant = identifiant;
-		this.motDePasse = pwd;
+		this.motDePasse = motDePasse;
 		this.cheminXML = cheminXML;
 	}
 
