@@ -1,5 +1,7 @@
 package Module_Securite;
 
+import java.io.Serializable;
+
 /**
  * La classe Sécurité met à disposition des méthodes pour les classes Crypteur et Decrypteur. 
  * 
@@ -8,7 +10,7 @@ package Module_Securite;
  * @author Yannick Falco && Maxime Vanbossel
  *
  */
-public class Securite {
+public class Securite implements Serializable{
 	
 	/** 
 	 * La méthode tabNbPremier récupère une chaine de caractères et renvoie un tableau d'entier correspondant

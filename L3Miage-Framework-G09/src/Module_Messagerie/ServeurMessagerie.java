@@ -1,19 +1,16 @@
 package Module_Messagerie;
 
 import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.SocketPermission;
 import java.net.UnknownHostException;
-import java.rmi.Naming;
-
+import java.rmi.AccessException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.security.Policy;
+
 
 /**
- * Classe qui met en place le RMI de la messagerie coté serveur il enregistre le
- * chat Room dans le Naming
+ * Classe qui met en place le RMI de la messagerie coté serveur il enregistre
+ * le chat Room dans le un registre passer en parametttre du constructeur
  * 
  * @author matheyt
  *
@@ -21,21 +18,25 @@ import java.security.Policy;
 public class ServeurMessagerie {
 
 	private SalonDiscussion salonDiscussion;
+	private Registry reg;
 
 	/**
-	 * constructeur simple de la classe
+	 * construteur de la classe qui prend le nom du salon de discution pour
+	 * l'enregistrer, ainsi qu'un registre pour l'enregistrement
+	 * 
+	 * @param nomSalon
+	 *            Le nom du Serveur.
 	 */
-	public ServeurMessagerie() {
+	public ServeurMessagerie(String nomSalon, Registry reg) {
 		try {
+			System.setProperty("java.security.policy", "file:./security.policy");
 
-			System.setProperty("java.security.policy","file:./security.policy");
-
-			
-			salonDiscussion = new SalonDiscussion("chatTest");
-			Registry reg = LocateRegistry.createRegistry(5555);
-			String url = "rmi://" + InetAddress.getLocalHost().getHostAddress() + "/ChatRoom";
+			salonDiscussion = new SalonDiscussion(nomSalon);
+			this.reg = reg;
+			String url = "rmi://" + InetAddress.getLocalHost().getHostAddress() + "/"
+					+ salonDiscussion.getNomSalonDiscussion();
 			System.out.println("Enregistrement de l'objet avec l'url : " + url);
-			reg.rebind(url, salonDiscussion);
+			this.reg.rebind(url, salonDiscussion);
 
 			System.out.println("Serveur lancee");
 		} catch (RemoteException e) {
@@ -46,28 +47,25 @@ public class ServeurMessagerie {
 		}
 	}
 
-	/**
-	 * construteur de la classe qui prend le nom du serveur sur lequel il sera
-	 * lancé, pour l'enregistrer
-	 * 
-	 * @param nomServeur
-	 *            Le nom du Serveur.
-	 */
-	public ServeurMessagerie(String nomServeur) {
+	public void fermetureServeurMessagerie()
+	{
 		try {
-			LocateRegistry.createRegistry(1099);
-			salonDiscussion = new SalonDiscussion(nomServeur);
-			String url = "rmi://" + nomServeur + "/chatRoom";
-			System.out.println("Enregistrement de l'objet avec l'url : " + url);
-			Naming.rebind(url, salonDiscussion);
-			System.out.println("Serveur lancé");
-		} catch (RemoteException e) {
+			this.reg.unbind("rmi://" + InetAddress.getLocalHost().getHostAddress() + "/"
+						+ salonDiscussion.getNomSalonDiscussion());
+		} catch (AccessException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (MalformedURLException e) {
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * fonction qui renvoi la chatRoom enregistrer en attribut
 	 * 

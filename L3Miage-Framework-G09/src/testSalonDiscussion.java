@@ -1,8 +1,8 @@
 
 
 import java.rmi.RemoteException;
-
-import Module_Messagerie.SalonDiscussion;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import Module_Messagerie.MessageTexte;
 import Module_Messagerie.ServeurMessagerie;
 import Structure_Contact.Adresse;
@@ -22,8 +22,8 @@ public class testSalonDiscussion {
 		Contact c3 = new Contact("Charlotte Jondet", adresseC3, "charlottejondet@hotmail.fr");
 
 
-		
-		ServeurMessagerie msgServ = new ServeurMessagerie();
+		Registry reg = LocateRegistry.createRegistry(5555);
+		ServeurMessagerie msgServ = new ServeurMessagerie("testSalon",reg);
 		
 		msgServ.getSalonDiscussion().ajouterContact(c1);
 		msgServ.getSalonDiscussion().ajouterContact(c2);

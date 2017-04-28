@@ -1,5 +1,7 @@
 package Module_Securite;
 
+import java.io.Serializable;
+
 /**
  * La classe Decrypteur décrypte une chaine de caractères ayant été précédemment
  * crypté via l'utilisation de la classe Crypteur.
@@ -9,7 +11,7 @@ package Module_Securite;
  * @author Yannick Falco && Maxime Vanbossel
  *
  */
-public class Decrypteur extends Securite {
+public class Decrypteur extends Securite implements Serializable{
 
 	private String msgDecrypte;
 

@@ -1,13 +1,8 @@
 package Module_Messagerie;
 
-import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.UnknownHostException;
-import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 /**
@@ -21,17 +16,18 @@ public class ClientMessagerie {
 	private _SalonDiscussion salonDiscussion;
 
 	/**
-	 * contructeur de la classe
+	 * contructeur de la classe qui va chercher l'objet salon de discution
+	 * enregistrer dans le registre passer en parametre
 	 * 
 	 * @param nomServeur
-	 *            Le nom du Serveur.
+	 * 				le nomdu Serveur (IP)
+	 * @param reg
+	 * 				le Registre d'enregistrement
 	 */
-	public ClientMessagerie(String nomServeur) {
+	public ClientMessagerie(String nomServeur,String nomSalon, Registry reg) {
 		try {
-			System.setProperty("java.security.policy","file:./security.policy");
-
-			Registry reg = LocateRegistry.getRegistry(/*InetAddress.getLocalHost().getHostAddress()*/nomServeur, 5555);
-			Remote remote = reg.lookup("rmi://" + nomServeur + "/ChatRoom");
+			System.setProperty("java.security.policy", "file:./security.policy");
+			Remote remote = reg.lookup("rmi://" + nomServeur +"/"+ nomSalon);
 			System.out.println("serveur ok");
 			if (remote instanceof _SalonDiscussion) {
 				this.salonDiscussion = (_SalonDiscussion) remote;
@@ -40,9 +36,9 @@ public class ClientMessagerie {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
 			e.printStackTrace();
-		}/* catch (UnknownHostException e) {
-			e.printStackTrace();
-		}*/
+		} /*
+			 * catch (UnknownHostException e) { e.printStackTrace(); }
+			 */
 	}
 
 	/**

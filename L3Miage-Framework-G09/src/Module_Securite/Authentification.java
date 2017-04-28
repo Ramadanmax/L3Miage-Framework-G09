@@ -16,6 +16,7 @@ import FrameworkExceptions.FrameworkException;
  * @author Yannick Falco && Maxime Vanbossel
  *
  */
+//
 public class Authentification {
 
 	private String identifiant;
@@ -32,13 +33,29 @@ public class Authentification {
 	 * @param motDePasse
 	 * @param cheminXML
 	 */
+<<<<<<< HEAD
 	public Authentification(String identifiant, String motDePasse) {
 		valide = false;
+=======
+	public Authentification(){
+		this.identifiant="";
+		this.motDePasse="";
+		this.valide = false;
+		
+	}
+	public Authentification(String identifiant, String pwd) {
+		this.valide = false;
+>>>>>>> branch 'master' of https://github.com/Ramadanmax/L3Miage-Framework-G09.git
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 	}
+<<<<<<< HEAD
 	public Authentification(String identifiant, String motDePasse, File cheminXML) {
 		valide = false;
+=======
+	public Authentification(String identifiant, String pwd, File cheminXML) {
+		this.valide = false;
+>>>>>>> branch 'master' of https://github.com/Ramadanmax/L3Miage-Framework-G09.git
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.cheminXML = cheminXML;
@@ -67,6 +84,32 @@ public class Authentification {
 				if (identifiant.equals(document.getElementsByTagName("login").item(i).getTextContent())
 						&& motDePasse.equals(document.getElementsByTagName("pwd").item(i).getTextContent())) {
 					valide = true;
+				}
+
+			}
+			if (!valide) {
+				throw new FrameworkException("Les identifiants fournis sont invalides.");
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return valide;
+	}
+	public boolean reconnaissance(String login, String mdp) throws FrameworkException {
+		try {
+
+			// analyse du document
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+
+			// récupération de la structure objet du document
+			Document document = docBuilder.parse(cheminXML);
+
+			for (int i = 0; i < document.getElementsByTagName("login").getLength(); i++) {
+				if (login.equals(document.getElementsByTagName("login").item(i).getTextContent())
+						&& mdp.equals(document.getElementsByTagName("pwd").item(i).getTextContent())) {
+					this.valide = true;
 				}
 
 			}
