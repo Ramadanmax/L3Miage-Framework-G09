@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<users>
+  <user>
+    <ID>1</ID>
+    <login>juntir1</login>
+    <pwd>planche</pwd>
+    <nom>juntir</nom>
+    <adresse>12 rue de la chance</adresse>
+    <mail>caravane_23@postal.fr</mail>
+    <messages>
+    	<message>
+    		<destinataire>raj23</destinataire>
+    		<date>23052016</date>
+    		<contenu>Bonjour. Hello.</contenu>
+    	</message>
+    	<message>
+    		<destinataire>raj23</destinataire>
+    		<date>23052016</date>
+    		<contenu>Bonjour. Hello.</contenu>
+    	</message>
+    	<message>
+    		<destinataire>jeromeF</destinataire>
+    		<date>23062016</date>
+    		<contenu>Test test</contenu>
+    	</message>
+    </messages>
+  </user>
+  <user>
+    <ID>2</ID>
+    <login>raj23</login>
+    <pwd>elchou</pwd>
+    <nom>raj</nom>
+    <adresse>1232 avenue Tristan Baul</adresse>
+    <mail>maison25@postal.fr</mail>
+    <messages>
+    	<message>
+    		<destinataire>juntir1</destinataire>
+    		<date>23052016</date>
+    		<contenu>Bonjour</contenu>
+    	</message>
+    </messages>
+  </user>
+  <user>
+    <ID>3</ID>
+    <login>JeromeF</login>
+    <pwd>panibre</pwd>
+    <nom>jerome</nom>
+    <adresse>65 faubourg François Marcel</adresse>
+    <mail>francois.marcel@postal.fr</mail>
+    <messages>
+    	<message>
+    		<destinataire>juntir1</destinataire>
+    		<date>24052016</date>
+    		<contenu>Moi aussi</contenu>
+    	</message>
+    </messages>
+  </user>
+  <user>
+    <ID>4</ID>
+    <login>taricPast</login>
+    <pwd>eperviers</pwd>
+    <nom>taric</nom>
+    <adresse>152 rond point Carl Junior</adresse>
+    <mail>taric.past@postal.fr</mail>
+    <messages>
+    	<message>
+    		<destinataire>raj23</destinataire>
+    		<date>26052016</date>
+    		<contenu>Un mot Une phrase</contenu>
+    	</message>
+    </messages>
+  </user>
+  <user>
+    <ID>5</ID>
+    <login>yvanoe</login>
+    <pwd>parenchasse</pwd>
+    <nom>yvanoe</nom>
+    <adresse>26 chemin de traverse</adresse>
+    <mail>antique_machine@postal.fr</mail>
+    <messages>
+    	<message>
+    		<destinataire>taricPast</destinataire>
+    		<date>24052016</date>
+    		<contenu>Phrase de test</contenu>
+    	</message>
+    </messages>
+  </user>
+  <user>
+    <ID>6</ID>
+    <login>tomG</login>
+    <pwd>duzor</pwd>
+    <nom>tom</nom>
+    <adresse>65 rue Joseph Charvier</adresse>
+    <mail>sorcier_tomg@postal.fr</mail>
+    <messages>
+    	<message>
+    		<destinataire>raj23</destinataire>
+    		<date>24052016</date>
+    		<contenu>Tu es un sorcier Raj</contenu>
+    	</message>
+    </messages>
+  </user>
+  <user>
+    <ID>7</ID>
+    <login>maximax</login>
+    <pwd>maxouillette</pwd>
+    <nom>maximilien</nom>
+    <adresse>869 rue de la plaine</adresse>
+    <mail>max26_drome@postal.fr</mail>
+    <messages>
+    	<message>
+    		<destinataire>tomG</destinataire>
+    		<date>24052016</date>
+    		<contenu>Moi aussi ?</contenu>
+    	</message>
+    </messages>
+  </user>
+  <user>
+    <ID>8</ID>
+    <login>nelivia</login>
+    <pwd>gw24lif</pwd>
+    <nom>kalith</nom>
+    <adresse>1 place du promontoire divin</adresse>
+    <mail>yannrally@postal.fr</mail>
+    <messages>
+    	<message>
+    		<destinataire>maximax</destinataire>
+    		<date>30052016</date>
+    		<contenu>Need PO</contenu>
+    	</message>
+    </messages>
+  </user>
+  <user>
+    <ID>9</ID>
+    <login>gg</login>
+    <pwd>ez</pwd>
+    <nom>sardoche</nom>
+    <adresse>1232 avenue du nexus</adresse>
+    <mail>sardoche@postal.fr</mail>
+    <messages>
+    </messages>
+  </user>
+</users>
