@@ -16,6 +16,7 @@ import FrameworkExceptions.FrameworkException;
  * @author Yannick Falco && Maxime Vanbossel
  *
  */
+//
 public class Authentification {
 
 	private String identifiant;
