@@ -2,6 +2,8 @@ package Module_Messagerie;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.rmi.AccessException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 
@@ -16,6 +18,7 @@ import java.rmi.registry.Registry;
 public class ServeurMessagerie {
 
 	private SalonDiscussion salonDiscussion;
+	private Registry reg;
 
 	/**
 	 * construteur de la classe qui prend le nom du salon de discution pour
@@ -29,10 +32,11 @@ public class ServeurMessagerie {
 			System.setProperty("java.security.policy", "file:./security.policy");
 
 			salonDiscussion = new SalonDiscussion(nomSalon);
+			this.reg = reg;
 			String url = "rmi://" + InetAddress.getLocalHost().getHostAddress() + "/"
 					+ salonDiscussion.getNomSalonDiscussion();
 			System.out.println("Enregistrement de l'objet avec l'url : " + url);
-			reg.rebind(url, salonDiscussion);
+			this.reg.rebind(url, salonDiscussion);
 
 			System.out.println("Serveur lancee");
 		} catch (RemoteException e) {
@@ -43,6 +47,25 @@ public class ServeurMessagerie {
 		}
 	}
 
+	public void fermetureServeurMessagerie()
+	{
+		try {
+			this.reg.unbind("rmi://" + InetAddress.getLocalHost().getHostAddress() + "/"
+						+ salonDiscussion.getNomSalonDiscussion());
+		} catch (AccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * fonction qui renvoi la chatRoom enregistrer en attribut
 	 * 

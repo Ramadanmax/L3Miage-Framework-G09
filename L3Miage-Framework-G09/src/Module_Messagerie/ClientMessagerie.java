@@ -27,7 +27,7 @@ public class ClientMessagerie {
 	public ClientMessagerie(String nomServeur,String nomSalon, Registry reg) {
 		try {
 			System.setProperty("java.security.policy", "file:./security.policy");
-			Remote remote = reg.lookup("rmi://" + nomServeur + nomSalon);
+			Remote remote = reg.lookup("rmi://" + nomServeur +"/"+ nomSalon);
 			System.out.println("serveur ok");
 			if (remote instanceof _SalonDiscussion) {
 				this.salonDiscussion = (_SalonDiscussion) remote;

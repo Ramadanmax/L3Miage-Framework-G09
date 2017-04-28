@@ -14,5 +14,4 @@ public class testClientCSalonDiscussion {
 		client.getSalonDiscussion().envoyerMessage(message);
 		System.out.println(client.getSalonDiscussion().getMessages());
 	}
-
 }

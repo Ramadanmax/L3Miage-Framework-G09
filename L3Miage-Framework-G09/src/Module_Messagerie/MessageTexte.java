@@ -59,6 +59,6 @@ public class MessageTexte extends $Message {
 		return "expediteur : " + this.getExpediteur().getNom() + "\n" + "destinateur : "
 				+ this.getDestinataire().getNom() + "\n" + "A :"
 				+ /* new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format( */this.getDate()/* ) */ + "\n"
-				+ this.getcontenu();
+				+ this.getcontenu()+"\n";
 	}
 }
