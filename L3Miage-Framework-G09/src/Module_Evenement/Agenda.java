@@ -49,7 +49,7 @@ public class Agenda implements Serializable {
 	 * 
 	 * @return events
 	 */
-	private List<Evenement> getEvenements() {
+	public List<Evenement> getEvenements() {
 		return evenements;
 	}
 
@@ -59,7 +59,7 @@ public class Agenda implements Serializable {
 	 * @param evenements
 	 *            Les nouveaux événements.
 	 */
-	private void setEvenements(List<Evenement> evenements) {
+	public void setEvenements(List<Evenement> evenements) {
 		this.evenements = evenements;
 	}
 
@@ -70,7 +70,7 @@ public class Agenda implements Serializable {
 	 *            Le nouvel événement.
 	 */
 
-	private void ajouterEvenement(Evenement evenement) {
+	public void ajouterEvenement(Evenement evenement) {
 		evenements.add(evenement);
 	}
 
@@ -80,7 +80,7 @@ public class Agenda implements Serializable {
 	 * @param evenement
 	 *            L'événement supprimé.
 	 */
-	private void supprimerEvenement(Evenement evenement) {
+	public void supprimerEvenement(Evenement evenement) {
 		evenements.remove(evenement);
 	}
 
