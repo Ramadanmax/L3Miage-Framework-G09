@@ -8,6 +8,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 /**
  * La classe Event permet aux utilisateurs de ce Framework de créer/supprimer et
  * modifier un Evenement. La modification d'un Evenement consiste en l'ajout ou
@@ -248,6 +250,35 @@ public class Evenement {
 			System.out.println(e);
 		}
 		return lieuValide;
+	}
+	
+	public void creationEvt(Evenement evt, File eventXML){
+		try{
+			// analyse du document
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+
+			// récupération de la structure objet du document
+			Document document = docBuilder.parse(eventXML);
+			
+			
+			Text nom = document.createTextNode(nom); 
+			Element p = document.createElement("newNode"); 
+			p.appendChild(a); 
+			
+			document.createTextNode("evenement");
+			document.createTextNode(nom);
+			document.createTextNode(lieu);
+			document.createTextNode(""+date);
+			if(createur != null){
+				document.createTextNode(createur);
+			}
+			document.createTextNode("/evenement");
+			
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	/**
