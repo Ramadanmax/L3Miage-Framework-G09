@@ -1,8 +1,18 @@
 package Module_Evenement;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
 
 import Structure_Contact.Adresse;
 import Structure_Contact.Contact;
@@ -51,6 +61,8 @@ public class Evenement {
 	 * @see Event#setContacts(List<Contact>)
 	 */
 	private List<Contact> contacts;
+	
+	public boolean estPasse;
 
 	/**
 	 * Le constructeur principal Event établit un événement selon le nom, le
@@ -66,6 +78,7 @@ public class Evenement {
 		this.lieu = lieu;
 		this.date = date;
 		this.contacts = contacts;
+		estPasse = false;
 	}
 
 	/**
@@ -86,7 +99,33 @@ public class Evenement {
 		this.date = date;
 		this.contacts = new ArrayList<Contact>();
 	}
+	
+	public boolean aEuLieu(File eventXML){
+		// analyse du document
+		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
 
+		// récupération de la structure objet du document
+		Document document = docBuilder.parse(eventXML);
+		
+		
+		
+		for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			Date dateEvt = SimpleDateFormat.parse(document.getElementsByTagName("nom").item(i).getTextContent());
+			Date maintenant = Date();
+			
+			if (nom.equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
+				if(dateEvt.after(maintenant)){
+					estPasse = true;
+				}
+			}
+
+		}
+		return estPasse;
+	}
+	
 	/**
 	 * Retourne le nom de l'événement.
 	 * 
