@@ -14,13 +14,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 
-import Structure_Contact.Adresse;
-import Structure_Contact.Contact;
+import Structure_createur.String;
+import Structure_createur.createur;
 
 /**
  * La classe Event permet aux utilisateurs de ce Framework de créer/supprimer et
  * modifier un Evenement. La modification d'un Evenement consiste en l'ajout ou
- * la suppression de contacts liés à cet Event.
+ * la suppression de createur liés à cet Event.
  * 
  * @version 1.0
  * @date 13/04/2017
@@ -42,7 +42,7 @@ public class Evenement {
 	 * @see Evenement#getLieu()
 	 * @see Evenement#setLieu(String)
 	 */
-	private Adresse lieu;
+	private String lieu;
 
 	/**
 	 * La date de l'événement. Son format int de base est le suivant : AAAAMMJJ
@@ -54,37 +54,37 @@ public class Evenement {
 	private int date;
 
 	/**
-	 * La liste des contacts participants à l'événement. Cette liste est amenée
+	 * La liste des createur participants à l'événement. Cette liste est amenée
 	 * à changer.
 	 * 
-	 * @see Evenement#getContacts()
-	 * @see Event#setContacts(List<Contact>)
+	 * @see Evenement#getcreateur()
+	 * @see Event#setcreateur(String)
 	 */
-	private List<Contact> contacts;
+	private String createur;
 	
 	public boolean estPasse;
 
 	/**
 	 * Le constructeur principal Event établit un événement selon le nom, le
-	 * lieu la date et la liste de contacts participants fournis.
+	 * lieu la date et la liste de createur participants fournis.
 	 * 
 	 * @param nom
 	 * @param lieu
 	 * @param date
-	 * @param contacts
+	 * @param createur
 	 */
-	public Evenement(String nom, Adresse lieu, int date, List<Contact> contacts) {
+	public Evenement(String nom, String lieu, int date, String createur) {
 		this.nom = nom;
 		this.lieu = lieu;
 		this.date = date;
-		this.contacts = contacts;
+		this.createur = createur;
 		estPasse = false;
 	}
 
 	/**
 	 * Le constructeur secondaire Event permet de créer un événement selon son
 	 * nom, son lieu et sa date. Il peut être évident qu'un Event crée ne
-	 * détienne pas encore de contacts participants.
+	 * détienne pas encore de createur participants.
 	 * 
 	 * @param nom
 	 *            Le nom du nouvel evenement.
@@ -93,11 +93,11 @@ public class Evenement {
 	 * @param i
 	 *            La date du nouveau evenement.
 	 */
-	public Evenement(String nom, Adresse lieu, int date) {
+	public Evenement(String nom, String lieu, int date) {
 		this.nom = nom;
 		this.lieu = lieu;
 		this.date = date;
-		this.contacts = new ArrayList<Contact>();
+		this.createur = "";
 	}
 	
 	public boolean aEuLieu(File eventXML){
@@ -112,9 +112,10 @@ public class Evenement {
 		
 		for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
 			
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			Date dateEvt = SimpleDateFormat.parse(document.getElementsByTagName("nom").item(i).getTextContent());
-			Date maintenant = Date();
+			int test = Integer.parseInt(document.getElementsByTagName("date").item(i).getTextContent());
+			Date dateEvt = new Date(25,12,1995);
+
+			Date maintenant = new Date();
 			
 			if (nom.equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
 				if(dateEvt.after(maintenant)){
@@ -150,7 +151,7 @@ public class Evenement {
 	 * 
 	 * @return le lieu de l'événement.
 	 */
-	public Adresse getLieu() {
+	public String getLieu() {
 		return lieu;
 	}
 
@@ -160,7 +161,7 @@ public class Evenement {
 	 * @param lieu
 	 *            Le nouveau lieu de l'événement.
 	 */
-	public void setLieu(Adresse lieu) {
+	public void setLieu(String lieu) {
 		this.lieu = lieu;
 	}
 
@@ -184,43 +185,43 @@ public class Evenement {
 	}
 
 	/**
-	 * Retourne la liste de contacts participants à l'événement.
+	 * Retourne la liste de createur participants à l'événement.
 	 * 
-	 * @return la liste de contacts participants à l'événement.
+	 * @return la liste de createur participants à l'événement.
 	 */
-	public List<Contact> getContacts() {
-		return contacts;
+	public String getcreateur() {
+		return createur;
 	}
 
 	/**
-	 * Met à jour la liste de contacts participants à l'événement.
+	 * Met à jour la liste de createur participants à l'événement.
 	 * 
-	 * @param contacts
-	 *            La nouvelle liste de contacts participant à l'événement
+	 * @param createur
+	 *            La nouvelle liste de createur participant à l'événement
 	 */
-	public void setContacts(List<Contact> contacts) {
-		this.contacts = contacts;
+	public void setcreateur(String createur) {
+		this.createur = createur;
 	}
 
 	/**
-	 * Ajoute un contact à la liste des contacts participants à l'événement.
+	 * Ajoute un createur à la liste des createur participants à l'événement.
 	 * 
 	 * @param c
-	 *            Le nouveau contact à ajouter à l'événement.
+	 *            Le nouveau createur à ajouter à l'événement.
 	 */
-	public void ajouterContact(Contact c) {
-		contacts.add(c);
+	public void ajoutercreateur(createur c) {
+		createur.add(c);
 	}
 
 	/**
-	 * Supprime un contact de la liste des contacts participants à l'événement.
+	 * Supprime un createur de la liste des createur participants à l'événement.
 	 * 
 	 * @param c
-	 *            Le contact à supprimer de la liste des contacts participants à
+	 *            Le createur à supprimer de la liste des createur participants à
 	 *            l'événement.
 	 * 
 	 */
-	public void supprimerContact(Contact c) {
-		contacts.remove(c);
+	public void supprimercreateur(createur c) {
+		createur.remove(c);
 	}
 }
