@@ -39,13 +39,35 @@ public class Authentification {
 		this.motDePasse="";
 		this.valide = false;
 	}
-	
+	/*@
+	 * require identifiant !="";
+	 * require motDePasse != "";
+	 * require identifiant.length() < 15
+	 * require motDePasse > 3
+	 * require motDePasse < 30
+	 * ensures identifiant != "";
+	 * ensures motDePasse != "";
+	 * ensures identifiant.length() < 15
+	 * ensures motDePasse > 3
+	 * ensures motDePasse < 30
+	 @*/
 	public Authentification(String identifiant, String motDePasse) {
 		this.valide = false;
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 	}
-	
+	/*@
+	 * require identifiant !="";
+	 * require motDePasse != "";
+	 * require identifiant.length() < 15
+	 * require motDePasse > 3
+	 * require motDePasse < 30
+	 * ensures identifiant != "";
+	 * ensures motDePasse != "";
+	 * ensures identifiant.length() < 15
+	 * ensures motDePasse > 3
+	 * ensures motDePasse < 30
+	 @*/
 	public Authentification(String identifiant, String motDePasse, File cheminXML) {
 		this.valide = false;
 		this.identifiant = identifiant;
