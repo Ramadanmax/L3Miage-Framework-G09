@@ -1,6 +1,7 @@
 package Module_Evenement;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -11,12 +12,10 @@ import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
-
-import Structure_createur.String;
-import Structure_createur.createur;
-
+import org.xml.sax.SAXException;
 /**
  * La classe Event permet aux utilisateurs de ce Framework de créer/supprimer et
  * modifier un Evenement. La modification d'un Evenement consiste en l'ajout ou
@@ -54,19 +53,19 @@ public class Evenement {
 	private int date;
 
 	/**
-	 * La liste des createur participants à l'événement. Cette liste est amenée
-	 * à changer.
+	 * Le créateur de l'événement
 	 * 
-	 * @see Evenement#getcreateur()
-	 * @see Event#setcreateur(String)
+	 * @see Evenement#getCreateur()
+	 * @see Event#setCreateur(String)
 	 */
 	private String createur;
 	
 	public boolean estPasse;
-
+	
+	private int jour,mois,annee;
 	/**
 	 * Le constructeur principal Event établit un événement selon le nom, le
-	 * lieu la date et la liste de createur participants fournis.
+	 * lieu la date et le createur.
 	 * 
 	 * @param nom
 	 * @param lieu
@@ -83,8 +82,7 @@ public class Evenement {
 
 	/**
 	 * Le constructeur secondaire Event permet de créer un événement selon son
-	 * nom, son lieu et sa date. Il peut être évident qu'un Event crée ne
-	 * détienne pas encore de createur participants.
+	 * nom, son lieu et sa date.
 	 * 
 	 * @param nom
 	 *            Le nom du nouvel evenement.
@@ -100,29 +98,43 @@ public class Evenement {
 		this.createur = "";
 	}
 	
+	/**
+	 * La méthode aEuLieu, qui prend en paramètre un fichier XML, renvoie True si l'événement à déjà eu lieu, False sinon.
+	 * 
+	 * @param eventXML
+	 * @return estPasse
+	 * @throws ParserConfigurationException 
+	 * @throws IOException 
+	 * @throws SAXException 
+	 */
 	public boolean aEuLieu(File eventXML){
-		// analyse du document
-		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+		try{
+			// analyse du document
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
 
-		// récupération de la structure objet du document
-		Document document = docBuilder.parse(eventXML);
-		
-		
-		
-		for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
+			// récupération de la structure objet du document
+			Document document = docBuilder.parse(eventXML);
 			
-			int test = Integer.parseInt(document.getElementsByTagName("date").item(i).getTextContent());
-			Date dateEvt = new Date(25,12,1995);
-
-			Date maintenant = new Date();
 			
-			if (nom.equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
-				if(dateEvt.after(maintenant)){
-					estPasse = true;
+			
+			for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
+				
+				int test = Integer.parseInt(document.getElementsByTagName("date").item(i).getTextContent());
+				LocalDate date = LocalDate.now(); // Date d'aujourd'hui
+				annee = test / 10000;
+				mois = (test - (test - (test%10000)))/100;
+				jour = test - ((test - (test%10000))+mois*100);
+				
+				if (nom.equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
+					if(date.getDayOfMonth() < jour && date.getMonthValue() < mois && date.getYear() < annee ){
+						estPasse = true;
+					}
 				}
 			}
-
+		}
+		catch (Exception e) {
+			System.out.println(e);
 		}
 		return estPasse;
 	}
@@ -189,7 +201,7 @@ public class Evenement {
 	 * 
 	 * @return la liste de createur participants à l'événement.
 	 */
-	public String getcreateur() {
+	public String getCreateur() {
 		return createur;
 	}
 
@@ -199,29 +211,7 @@ public class Evenement {
 	 * @param createur
 	 *            La nouvelle liste de createur participant à l'événement
 	 */
-	public void setcreateur(String createur) {
+	public void setCreateur(String createur) {
 		this.createur = createur;
-	}
-
-	/**
-	 * Ajoute un createur à la liste des createur participants à l'événement.
-	 * 
-	 * @param c
-	 *            Le nouveau createur à ajouter à l'événement.
-	 */
-	public void ajoutercreateur(createur c) {
-		createur.add(c);
-	}
-
-	/**
-	 * Supprime un createur de la liste des createur participants à l'événement.
-	 * 
-	 * @param c
-	 *            Le createur à supprimer de la liste des createur participants à
-	 *            l'événement.
-	 * 
-	 */
-	public void supprimercreateur(createur c) {
-		createur.remove(c);
 	}
 }
