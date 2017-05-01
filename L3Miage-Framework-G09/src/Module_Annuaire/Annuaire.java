@@ -30,7 +30,11 @@ public class Annuaire implements Serializable {
 	 * 
 	 * @param c
 	 *            Le Contact a ajouter.
+	 * 
 	 */
+	/*@ 
+	 *ensures contacts.size() == \old(contacts.size())+1
+	 @*/
 	public void ajouterContact(Contact c) {
 		this.contacts.add(c);
 	}
@@ -51,6 +55,9 @@ public class Annuaire implements Serializable {
 	 *            Le Contact a supprimer.
 	 * @throws FrameworkException
 	 */
+	/*@ 
+	 *ensures contacts.size() == \old(contacts.size())-1
+	 @*/
 	public void supprimerContact(Contact c) throws FrameworkException {
 		if (!this.contacts.contains(c)) {
 			// Le Contact n'existe pas.
