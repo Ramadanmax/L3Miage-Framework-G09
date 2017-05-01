@@ -60,9 +60,13 @@ public class Evenement {
 	 */
 	private String createur;
 	
-	public boolean estPasse;
+	public boolean estPassee;
 	
-	public boolean valide;
+	public boolean dateValide;
+	
+	public boolean nomValide;
+	
+	public boolean lieuValide;
 	
 	private int jour,mois,annee;
 	/**
@@ -79,8 +83,10 @@ public class Evenement {
 		this.lieu = lieu;
 		this.date = date;
 		this.createur = createur;
-		estPasse = false;
-		valide = false;
+		estPassee = false;
+		dateValide = false;
+		nomValide = false;
+		lieuValide = false;
 	}
 
 	/**
@@ -99,18 +105,17 @@ public class Evenement {
 		this.lieu = lieu;
 		this.date = date;
 		this.createur = "";
-		estPasse = false;
-		valide = false;
+		estPassee = false;
+		dateValide = false;
+		nomValide = false;
+		lieuValide = false;
 	}
 	
 	/**
 	 * La méthode aEuLieu, qui prend en paramètre un fichier XML, renvoie True si l'événement à déjà eu lieu, False sinon.
 	 * 
 	 * @param eventXML
-	 * @return estPasse
-	 * @throws ParserConfigurationException 
-	 * @throws IOException 
-	 * @throws SAXException 
+	 * @return estPassee
 	 */
 	public boolean aEuLieu(File eventXML){
 		try{
@@ -133,7 +138,7 @@ public class Evenement {
 				
 				if (nom.equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
 					if(date.getDayOfMonth() < jour && date.getMonthValue() < mois && date.getYear() < annee ){
-						estPasse = true;
+						estPassee = true;
 					}
 				}
 			}
@@ -141,10 +146,16 @@ public class Evenement {
 		catch (Exception e) {
 			System.out.println(e);
 		}
-		return estPasse;
+		return estPassee;
 	}
 	
-	public boolean estValide(File eventXML){
+	/**
+	 * La méthode dateEstValidee, qui prend en paramètre un fichier XML, renvoie True si la date est correcte, False sinon.
+	 * 
+	 * @param eventXML
+	 * @return dateValide
+	 */
+	public boolean dateEstValidee(File eventXML){
 		try{
 			// analyse du document
 			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -163,7 +174,7 @@ public class Evenement {
 				
 				if (getNom().equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
 					if(0 < jour && jour < 32 && 0 < mois && mois < 13 && 999 < annee && annee < 10000){
-						valide = true;
+						dateValide = true;
 					}
 				}
 			}
@@ -171,7 +182,67 @@ public class Evenement {
 		catch (Exception e) {
 			System.out.println(e);
 		}
-		return valide;
+		return dateValide;
+	}
+	
+	/**
+	 * La méthode nomEstValidee, qui prend en paramètre un fichier XML, renvoie True si le nom est correcte, False sinon.
+	 * 
+	 * @param eventXML
+	 * @return nomValide
+	 */
+	public boolean nomEstValide(File eventXML){
+		try{
+			// analyse du document
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+
+			// récupération de la structure objet du document
+			Document document = docBuilder.parse(eventXML);
+			
+			for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
+				
+				if (getNom().equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
+					if(nom.length() < 100){
+						nomValide = true;
+					}
+				}
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return nomValide;
+	}
+	
+	/**
+	 * La méthode lieuEstValidee, qui prend en paramètre un fichier XML, renvoie True si le lieu est correcte, False sinon.
+	 * 
+	 * @param eventXML
+	 * @return nomValide
+	 */
+	public boolean lieuEstValide(File eventXML){
+		try{
+			// analyse du document
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+
+			// récupération de la structure objet du document
+			Document document = docBuilder.parse(eventXML);
+			
+			for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
+				
+				if (getNom().equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
+					if(lieu.length() < 100){
+						lieuValide = true;
+					}
+				}
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return lieuValide;
 	}
 	
 	/**
