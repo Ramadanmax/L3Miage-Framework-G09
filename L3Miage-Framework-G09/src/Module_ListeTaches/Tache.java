@@ -18,35 +18,44 @@ import org.w3c.dom.Document;
 public class Tache {
 
 	private String nom;
-	private Date date;
+	private int date;
 	private boolean fait;
 	
-	private boolean dateValide;
+	private boolean estPassee;
 	
 	public boolean nomValide;
 	
-	public boolean lieuValide;
+	public boolean dateValide;
+	
+	private int jour,mois,annee;
 
 	/**
 	 * Constructeur d'une Tache.
 	 * 
 	 * @param nom
 	 *            Le nom d'une Tache.
-	 * @param date
+	 * @param int
 	 *            La date d'une Tache.
 	 */
 	/*@
 	 * requires nom.length()>0;
 	 * ensures nom.length()>0;
 	 @*/
-	public Tache(String nom, Date date) {
+	public Tache(String nom, int date) {
 		this.nom = nom;
 		this.date = date;
 		this.fait = false;
-		dateValide = false;
+		estPassee = false;
 		nomValide = false;
+		dateValide = false;
 	}
-
+	
+	/**
+	 * La méthode aEuLieu, qui prend en paramètre un fichier XML, renvoie True si la tâche à déjà eu lieu, False sinon.
+	 * 
+	 * @param eventXML
+	 * @return estPassee
+	 */
 	public boolean aEuLieu(File eventXML){
 		try{
 			// analyse du document
@@ -56,7 +65,36 @@ public class Tache {
 			// récupération de la structure objet du document
 			Document document = docBuilder.parse(eventXML);
 			
+			int test = getDate();
+			LocalDate date = LocalDate.now(); // Date d'aujourd'hui
+			annee = test / 10000;
+			mois = (test - (test - (test%10000)))/100;
+			jour = test - ((test - (test%10000)) + mois*100);
 			
+			if(date.getDayOfMonth() < jour && date.getMonthValue() < mois && date.getYear() < annee ){
+				estPassee = true;
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return estPassee;
+	}
+	
+	/**
+	 * La méthode dateEstValidee, qui prend en paramètre un fichier XML, renvoie True si la date est correcte, False sinon.
+	 * 
+	 * @param eventXML
+	 * @return dateValide
+	 */
+	public boolean dateEstValidee(File eventXML){
+		try{
+			// analyse du document
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+
+			// récupération de la structure objet du document
+			Document document = docBuilder.parse(eventXML);
 			
 			for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
 				
@@ -66,9 +104,9 @@ public class Tache {
 				mois = (test - (test - (test%10000)))/100;
 				jour = test - ((test - (test%10000)) + mois*100);
 				
-				if (nom.equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
-					if(date.getDayOfMonth() < jour && date.getMonthValue() < mois && date.getYear() < annee ){
-						estPassee = true;
+				if (getNom().equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
+					if(0 < jour && jour < 32 && 0 < mois && mois < 13 && 999 < annee && annee < 10000){
+						dateValide = true;
 					}
 				}
 			}
@@ -76,9 +114,15 @@ public class Tache {
 		catch (Exception e) {
 			System.out.println(e);
 		}
-		return estPassee;
+		return dateValide;
 	}
 	
+	/**
+	 * La méthode nomEstValidee, qui prend en paramètre un fichier XML, renvoie True si le nom est correcte, False sinon.
+	 * 
+	 * @param eventXML
+	 * @return nomValide
+	 */
 	public boolean nomEstValide(File eventXML){
 		try{
 			// analyse du document
@@ -117,7 +161,7 @@ public class Tache {
 	 * 
 	 * @return La date de la Tache courante.
 	 */
-	public Date getDate() {
+	public int getDate() {
 		return date;
 	}
 
@@ -151,7 +195,7 @@ public class Tache {
 	 *            La date d'une Tache.
 	 */
 
-	public void setDate(Date date) {
+	public void setDate(int date) {
 		this.date = date;
 	}
 
