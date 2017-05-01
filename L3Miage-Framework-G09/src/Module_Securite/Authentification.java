@@ -33,29 +33,21 @@ public class Authentification {
 	 * @param motDePasse
 	 * @param cheminXML
 	 */
-<<<<<<< HEAD
-	public Authentification(String identifiant, String motDePasse) {
-		valide = false;
-=======
+
 	public Authentification(){
 		this.identifiant="";
 		this.motDePasse="";
 		this.valide = false;
-		
 	}
-	public Authentification(String identifiant, String pwd) {
+	
+	public Authentification(String identifiant, String motDePasse) {
 		this.valide = false;
->>>>>>> branch 'master' of https://github.com/Ramadanmax/L3Miage-Framework-G09.git
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 	}
-<<<<<<< HEAD
+	
 	public Authentification(String identifiant, String motDePasse, File cheminXML) {
-		valide = false;
-=======
-	public Authentification(String identifiant, String pwd, File cheminXML) {
 		this.valide = false;
->>>>>>> branch 'master' of https://github.com/Ramadanmax/L3Miage-Framework-G09.git
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.cheminXML = cheminXML;
