@@ -51,6 +51,14 @@ public class Evenement {
 	 * @see Evenement#setDate(Date)
 	 */
 	private int date;
+	
+	/**
+	 * Description de l'événement
+	 * 
+	 * @see Evenement#getDescription()
+	 * @see Evenement#setDescription(Date)
+	 */
+	private String description;
 
 	/**
 	 * Le créateur de l'événement
@@ -71,17 +79,19 @@ public class Evenement {
 	private int jour,mois,annee;
 	/**
 	 * Le constructeur principal Event établit un événement selon le nom, le
-	 * lieu la date et le createur.
+	 * lieu la date, la description et le createur.
 	 * 
 	 * @param nom
 	 * @param lieu
 	 * @param date
 	 * @param createur
+	 * @param description
 	 */
-	public Evenement(String nom, String lieu, int date, String createur) {
+	public Evenement(String nom, String lieu, int date,String description, String createur) {
 		this.nom = nom;
 		this.lieu = lieu;
 		this.date = date;
+		this.description = description;
 		this.createur = createur;
 		estPassee = false;
 		dateValide = false;
@@ -91,7 +101,7 @@ public class Evenement {
 
 	/**
 	 * Le constructeur secondaire Event permet de créer un événement selon son
-	 * nom, son lieu et sa date.
+	 * nom, son lieu, sa date et sa description.
 	 * 
 	 * @param nom
 	 *            Le nom du nouvel evenement.
@@ -99,11 +109,14 @@ public class Evenement {
 	 *            Le lieu du nouvel evenement.
 	 * @param i
 	 *            La date du nouveau evenement.
+	 * @param description
+	 *            La description du nouveau evenement.
 	 */
-	public Evenement(String nom, String lieu, int date) {
+	public Evenement(String nom, String lieu, int date, String description) {
 		this.nom = nom;
 		this.lieu = lieu;
 		this.date = date;
+		this.description = description;
 		this.createur = "";
 		estPassee = false;
 		dateValide = false;
@@ -302,6 +315,25 @@ public class Evenement {
 		this.date = date;
 	}
 
+	/**
+	 * Retourne la descritpion de l'événement.
+	 * 
+	 * @return description
+	 */
+	public String getDescription() {
+		return description;
+	}
+	
+	/**
+	 * Met à jour la description de l'événement.
+	 * 
+	 * @param description
+	 *            La nouvelle description de l'événement
+	 */
+	public void setDate(String description) {
+		this.description = description;
+	}
+	
 	/**
 	 * Retourne la liste de createur participants à l'événement.
 	 * 
