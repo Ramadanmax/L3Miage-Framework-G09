@@ -26,7 +26,7 @@ public class Contact implements Serializable {
 	private List<_SalonDiscussion> chatRooms;
 	private Annuaire annuaire;
 	private Agenda agenda;
-	private ListeTaches taskList;
+	private ListeTaches listeTaches;
 
 	/**
 	 * Constructeur d'un Contact.
@@ -45,7 +45,7 @@ public class Contact implements Serializable {
 		this.annuaire = new Annuaire();
 		this.agenda = new Agenda();
 		this.chatRooms = new ArrayList<_SalonDiscussion>();
-		this.taskList = new ListeTaches();
+		this.listeTaches = new ListeTaches();
 
 		// Verification de la validite du mail
 		if (!mail.matches(
@@ -116,7 +116,7 @@ public class Contact implements Serializable {
 	 * @return La TaskList du Contact courant.
 	 */
 	public ListeTaches getTaskList() {
-		return taskList;
+		return listeTaches;
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class Contact implements Serializable {
 	 *            La TaskList d'un Contact.
 	 */
 	public void setTaskList(ListeTaches taskList) {
-		this.taskList = taskList;
+		this.listeTaches = taskList;
 	}
 
 	/**
