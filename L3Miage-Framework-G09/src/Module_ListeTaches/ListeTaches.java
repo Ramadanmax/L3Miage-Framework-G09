@@ -30,6 +30,9 @@ public class ListeTaches implements Serializable {
 	 * @param t
 	 *            La Tache a ajouter.
 	 */
+	/*@ 
+	 *ensures taches.size() == \old(taches.size())+1
+	 @*/
 	public void ajouterTache(Tache t) {
 		this.taches.add(t);
 	}
@@ -41,6 +44,9 @@ public class ListeTaches implements Serializable {
 	 *            La Tache a supprimer.
 	 * @throws FrameworkException
 	 */
+	/*@ 
+	 *ensures taches.size() == \old(taches.size())-1
+	 @*/
 	public void supprimerTache(Tache tache) throws FrameworkException {
 		if (!this.taches.contains(tache)) {
 			// La Tache n'existe pas.
