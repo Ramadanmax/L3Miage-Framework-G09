@@ -33,7 +33,7 @@ public class Annuaire implements Serializable {
 	 * 
 	 */
 	/*@ 
-	 *ensures contacts.size() == \old(contacts.size())+1
+	 *ensures contacts.size() == \old(contacts.size())+1;
 	 @*/
 	public void ajouterContact(Contact c) {
 		this.contacts.add(c);
@@ -56,7 +56,7 @@ public class Annuaire implements Serializable {
 	 * @throws FrameworkException
 	 */
 	/*@ 
-	 *ensures contacts.size() == \old(contacts.size())-1
+	 *ensures contacts.size() == \old(contacts.size())-1;
 	 @*/
 	public void supprimerContact(Contact c) throws FrameworkException {
 		if (!this.contacts.contains(c)) {

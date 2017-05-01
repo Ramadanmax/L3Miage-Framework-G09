@@ -22,6 +22,10 @@ public class Tache {
 	 * @param date
 	 *            La date d'une Tache.
 	 */
+	/*@
+	 * requires nom.length()>0;
+	 * ensures nom.length()>0;
+	 @*/
 	public Tache(String nom, Date date) {
 		this.nom = nom;
 		this.date = date;
@@ -61,6 +65,10 @@ public class Tache {
 	 * @param nom
 	 *            Le nom d'une Tache.
 	 */
+	/*@
+	 * requires nom.length()>0;
+	 * ensures nom.length()>0;
+	 @*/
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
@@ -71,6 +79,7 @@ public class Tache {
 	 * @param date
 	 *            La date d'une Tache.
 	 */
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
