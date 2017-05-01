@@ -62,6 +62,8 @@ public class Evenement {
 	
 	public boolean estPasse;
 	
+	public boolean valide;
+	
 	private int jour,mois,annee;
 	/**
 	 * Le constructeur principal Event établit un événement selon le nom, le
@@ -78,6 +80,7 @@ public class Evenement {
 		this.date = date;
 		this.createur = createur;
 		estPasse = false;
+		valide = false;
 	}
 
 	/**
@@ -96,6 +99,8 @@ public class Evenement {
 		this.lieu = lieu;
 		this.date = date;
 		this.createur = "";
+		estPasse = false;
+		valide = false;
 	}
 	
 	/**
@@ -124,7 +129,7 @@ public class Evenement {
 				LocalDate date = LocalDate.now(); // Date d'aujourd'hui
 				annee = test / 10000;
 				mois = (test - (test - (test%10000)))/100;
-				jour = test - ((test - (test%10000))+mois*100);
+				jour = test - ((test - (test%10000)) + mois*100);
 				
 				if (nom.equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
 					if(date.getDayOfMonth() < jour && date.getMonthValue() < mois && date.getYear() < annee ){
@@ -137,6 +142,36 @@ public class Evenement {
 			System.out.println(e);
 		}
 		return estPasse;
+	}
+	
+	public boolean estValide(File eventXML){
+		try{
+			// analyse du document
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+
+			// récupération de la structure objet du document
+			Document document = docBuilder.parse(eventXML);
+			
+			for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
+				
+				int test = Integer.parseInt(document.getElementsByTagName("date").item(i).getTextContent());
+				LocalDate date = LocalDate.now(); // Date d'aujourd'hui
+				annee = test / 10000;
+				mois = (test - (test - (test%10000)))/100;
+				jour = test - ((test - (test%10000)) + mois*100);
+				
+				if (getNom().equals(document.getElementsByTagName("nom").item(i).getTextContent())) {
+					if(0 < jour && jour < 32 && 0 < mois && mois < 13 && 999 < annee && annee < 10000){
+						valide = true;
+					}
+				}
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return valide;
 	}
 	
 	/**
