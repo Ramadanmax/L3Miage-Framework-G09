@@ -16,11 +16,11 @@ public class testListeTaches {
 		Contact c1 = new Contact("Virgil Bontempi", adresseC1, "virgilbontempi@hotmail.fr");
 
 		// Creation de Tasks
-		Tache t1 = new Tache("Nourrir le chat", new Date());
-		Tache t2 = new Tache("Prendre une douche", new Date());
-		Tache t3 = new Tache("Sortir les poubelles", new Date());
-		Tache t4 = new Tache("Reviser (optionnel ?)", new Date());
-		Tache t5 = new Tache("Aller a la muscu !!!", new Date());
+		Tache t1 = new Tache("Nourrir le chat", 20160224);
+		Tache t2 = new Tache("Prendre une douche", 20160225);
+		Tache t3 = new Tache("Sortir les poubelles", 20160225);
+		Tache t4 = new Tache("Reviser (optionnel ?)", 20160232);
+		Tache t5 = new Tache("Aller a la muscu !!!", 20160612);
 		
 		// Creation d'une TaskList
 		ListeTaches taskList = new ListeTaches();
