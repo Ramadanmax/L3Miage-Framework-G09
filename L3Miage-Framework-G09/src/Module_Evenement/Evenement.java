@@ -258,14 +258,6 @@ public class Evenement {
 		return lieuValide;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Evenement evt1 = new Evenement("nom","lieu",20130512,"description");
-		File evnt = new File("src/Module_Evenement/event.xml");
-		Evenement xml = new Evenement("nom","lieu",20130512,"description");
-		xml.creationEvt(evt1,evnt);
-	}
-	
 	public void creationEvt(Evenement evt, File eventXML){
 
 		 try {
