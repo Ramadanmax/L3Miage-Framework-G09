@@ -1,5 +1,3 @@
-import java.util.Date;
-
 import Module_ListeTaches.Tache;
 import Module_ListeTaches.ListeTaches;
 import Structure_Contact.Adresse;

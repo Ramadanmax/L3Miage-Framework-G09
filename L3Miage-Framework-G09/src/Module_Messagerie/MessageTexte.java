@@ -1,6 +1,5 @@
 package Module_Messagerie;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import Structure_Contact.Contact;
@@ -13,6 +12,10 @@ import Structure_Contact.Contact;
  */
 public class MessageTexte extends $Message {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String contenu;
 
 	/**

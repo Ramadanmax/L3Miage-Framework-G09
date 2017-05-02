@@ -1,7 +1,6 @@
 package Module_Messagerie;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import Structure_Contact.Contact;
 

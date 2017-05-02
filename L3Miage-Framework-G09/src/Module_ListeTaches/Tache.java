@@ -2,7 +2,6 @@ package Module_ListeTaches;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -58,12 +57,6 @@ public class Tache {
 	 */
 	public boolean aEuLieu(File eventXML){
 		try{
-			// analyse du document
-			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-
-			// récupération de la structure objet du document
-			Document document = docBuilder.parse(eventXML);
 			
 			int test = getDate();
 			LocalDate date = LocalDate.now(); // Date d'aujourd'hui
@@ -99,7 +92,6 @@ public class Tache {
 			for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
 				
 				int test = Integer.parseInt(document.getElementsByTagName("date").item(i).getTextContent());
-				LocalDate date = LocalDate.now(); // Date d'aujourd'hui
 				annee = test / 10000;
 				mois = (test - (test - (test%10000)))/100;
 				jour = test - ((test - (test%10000)) + mois*100);

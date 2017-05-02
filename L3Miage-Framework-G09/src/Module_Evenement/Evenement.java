@@ -13,9 +13,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.Text;
 /**
  * La classe Event permet aux utilisateurs de ce Framework de créer/supprimer et
  * modifier un Evenement. La modification d'un Evenement consiste en l'ajout ou
@@ -180,7 +178,6 @@ public class Evenement {
 			for (int i = 0; i < document.getElementsByTagName("evenement").getLength(); i++) {
 				
 				int test = Integer.parseInt(document.getElementsByTagName("date").item(i).getTextContent());
-				LocalDate date = LocalDate.now(); // Date d'aujourd'hui
 				annee = test / 10000;
 				mois = (test - (test - (test%10000)))/100;
 				jour = test - ((test - (test%10000)) + mois*100);
@@ -275,31 +272,31 @@ public class Evenement {
 		    //New Node nom       
 		    Node nom = doc.createElement("nom");        
 		    result.appendChild(nom);
-		    nom.setTextContent("");
+		    nom.setTextContent(evt.getNom());
 		    
 		    //
 		    //New Node lieu       
 		    Node lieu = doc.createElement("lieu");        
 		    result.appendChild(lieu);
-		    lieu.setTextContent("");
+		    lieu.setTextContent(evt.getLieu());
 		    
 		    //
 		    //New Node date       
 		    Node date = doc.createElement("date");        
 		    result.appendChild(date);
-		    date.setTextContent("");
+		    date.setTextContent(evt.getDate() + "");
 		    
 		    //
 		    //New Node description       
 		    Node description = doc.createElement("description");        
 		    result.appendChild(description);
-		    description.setTextContent("");
+		    description.setTextContent(evt.getDescription());
 		    
 		    //
 		    //New Node createur       
 		    Node createur = doc.createElement("createur");        
 		    result.appendChild(createur);
-		    createur.setTextContent("");
+		    createur.setTextContent(evt.createur);
 		    
 		    //
 		    //New Node contributions       

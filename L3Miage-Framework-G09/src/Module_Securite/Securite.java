@@ -12,6 +12,11 @@ import java.io.Serializable;
  */
 public class Securite implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** 
 	 * La méthode tabNbPremier récupère une chaine de caractères et renvoie un tableau d'entier correspondant
 	 * aux n premiers nombres entiers. n étant le nombre de caractères dans la chaine de caractères récupérée.
