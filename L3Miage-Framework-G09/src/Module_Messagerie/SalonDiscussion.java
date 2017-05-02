@@ -1,9 +1,18 @@
 package Module_Messagerie;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,6 +26,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -28,7 +38,7 @@ import Structure_Contact.Contact;
  * @author matheyt
  * 
  *         class ChatRoomImpl heritan de UnicastRemoteObject pour l'utilisation
- *         avec un RMI elle donne les outils nécéssaire à la gestion d'une
+ *         avec un RMI elle donne les outils nÃ©cÃ©ssaire Ã  la gestion d'une
  *         chatRoom
  */
 public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscussion {
@@ -69,7 +79,7 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 	}
 
 	/**
-	 * fonction renvoyant la liste de tous les messages enregisté dans
+	 * fonction renvoyant la liste de tous les messages enregistÃ© dans
 	 * l'attribu message de la classe
 	 * 
 	 * @return messages La liste messages.
@@ -80,9 +90,9 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 	}
 
 	/**
-	 * fonction renvoyant la liste de tous les contacts enregisté dans
-	 * l'attribu contacts de la classe représentant toutes les personne
-	 * participant à la chat room
+	 * fonction renvoyant la liste de tous les contacts enregistÃ© dans
+	 * l'attribu contacts de la classe reprÃ©sentant toutes les personne
+	 * participant Ã  la chat room
 	 * 
 	 * @return contacts La liste contacts.
 	 */
@@ -123,9 +133,16 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 		contacts.supprimerContact(contact);
 	}
 
+	public void setAnnuaire(Annuaire ann)
+	{
+		this.contacts=ann;
+	}
+	
+	
 	public void save() {
 
 		try {
+
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder p = dbFactory.newDocumentBuilder();
 			Document doc = p.newDocument();
