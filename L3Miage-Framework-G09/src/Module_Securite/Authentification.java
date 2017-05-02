@@ -30,24 +30,48 @@ public class Authentification {
 	 * fournit.
 	 * 
 	 * @param identifiant
-	 * @param pwd
+	 * @param motDePasse
 	 * @param cheminXML
 	 */
+
 	public Authentification(){
 		this.identifiant="";
 		this.motDePasse="";
 		this.valide = false;
-		
 	}
-	public Authentification(String identifiant, String pwd) {
+	/*@
+	 * require identifiant !="";
+	 * require motDePasse != "";
+	 * require identifiant.length() < 15
+	 * require motDePasse > 3
+	 * require motDePasse < 30
+	 * ensures identifiant != "";
+	 * ensures motDePasse != "";
+	 * ensures identifiant.length() < 15
+	 * ensures motDePasse > 3
+	 * ensures motDePasse < 30
+	 @*/
+	public Authentification(String identifiant, String motDePasse) {
 		this.valide = false;
 		this.identifiant = identifiant;
-		this.motDePasse = pwd;
+		this.motDePasse = motDePasse;
 	}
-	public Authentification(String identifiant, String pwd, File cheminXML) {
+	/*@
+	 * require identifiant !="";
+	 * require motDePasse != "";
+	 * require identifiant.length() < 15
+	 * require motDePasse > 3
+	 * require motDePasse < 30
+	 * ensures identifiant != "";
+	 * ensures motDePasse != "";
+	 * ensures identifiant.length() < 15
+	 * ensures motDePasse > 3
+	 * ensures motDePasse < 30
+	 @*/
+	public Authentification(String identifiant, String motDePasse, File cheminXML) {
 		this.valide = false;
 		this.identifiant = identifiant;
-		this.motDePasse = pwd;
+		this.motDePasse = motDePasse;
 		this.cheminXML = cheminXML;
 	}
 
