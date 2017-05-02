@@ -6,9 +6,15 @@ import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 /**
  * La classe Event permet aux utilisateurs de ce Framework de créer/supprimer et
@@ -252,33 +258,152 @@ public class Evenement {
 		return lieuValide;
 	}
 	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Evenement evt1 = new Evenement("nom","lieu",20130512,"description");
+		File evnt = new File("src/Module_Evenement/event.xml");
+		Evenement xml = new Evenement("nom","lieu",20130512,"description");
+		xml.creationEvt(evt1,evnt);
+	}
+	
 	public void creationEvt(Evenement evt, File eventXML){
-		try{
-			// analyse du document
-			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
 
-			// récupération de la structure objet du document
-			Document document = docBuilder.parse(eventXML);
-			
-			
-			Text nom = document.createTextNode(nom); 
-			Element p = document.createElement("newNode"); 
-			p.appendChild(a); 
-			
-			document.createTextNode("evenement");
-			document.createTextNode(nom);
-			document.createTextNode(lieu);
-			document.createTextNode(""+date);
-			if(createur != null){
-				document.createTextNode(createur);
-			}
-			document.createTextNode("/evenement");
-			
-		}
-		catch (Exception e) {
-			System.out.println(e);
-		}
+		 try {
+		    DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+		    DocumentBuilder builder = factory.newDocumentBuilder();
+		    // creating input stream
+		    Document doc = builder.parse(eventXML);
+		    
+		    //
+		    //New Node evenement       
+		    Node evenement = doc.createElement("evenement");        
+		    Node result = doc.getElementsByTagName("evenements").item(0).appendChild(evenement);
+		    //
+		    //
+		    //New Node nom       
+		    Node nom = doc.createElement("nom");        
+		    result.appendChild(nom);
+		    nom.setTextContent("");
+		    
+		    //
+		    //New Node lieu       
+		    Node lieu = doc.createElement("lieu");        
+		    result.appendChild(lieu);
+		    lieu.setTextContent("");
+		    
+		    //
+		    //New Node date       
+		    Node date = doc.createElement("date");        
+		    result.appendChild(date);
+		    date.setTextContent("");
+		    
+		    //
+		    //New Node description       
+		    Node description = doc.createElement("description");        
+		    result.appendChild(description);
+		    description.setTextContent("");
+		    
+		    //
+		    //New Node createur       
+		    Node createur = doc.createElement("createur");        
+		    result.appendChild(createur);
+		    createur.setTextContent("");
+		    
+		    //
+		    //New Node contributions       
+		    Node contributions = doc.createElement("contributions");        
+		    Node contrib = result.appendChild(contributions);
+		    
+		    //
+		    //New Node contributions_bien       
+		    Node contributions_bien = doc.createElement("contributions_bien");        
+		    Node contribb = contrib.appendChild(contributions_bien);
+		    
+		    //
+		    //New Node id_cbien       
+		    Node id_cbien = doc.createElement("id_cbien");        
+		    contribb.appendChild(id_cbien);
+		    id_cbien.setTextContent("");
+		    
+		    //
+		    //New Node id_contact       
+		    Node id_contact = doc.createElement("id_contact");        
+		    contribb.appendChild(id_contact);
+		    id_contact.setTextContent("");
+		    
+		    //
+		    //New Node nom_cbien       
+		    Node nom_cbien = doc.createElement("nom_cbien");        
+		    contribb.appendChild(nom_cbien);
+		    nom_cbien.setTextContent("");
+		    
+		    //
+		    //New Node unite       
+		    Node unite = doc.createElement("unite");        
+		    contribb.appendChild(unite);
+		    unite.setTextContent("");
+		    
+		    //
+		    //New Node valeur_cbien       
+		    Node valeur_cbien = doc.createElement("valeur_cbien");        
+		    contribb.appendChild(valeur_cbien);
+		    valeur_cbien.setTextContent("");
+		    
+		    //
+		    //New Node description_cbien       
+		    Node description_cbien = doc.createElement("description_cbien");        
+		    contribb.appendChild(description_cbien);
+		    description_cbien.setTextContent("");
+
+		    //
+		    //New Node contribution_service       
+		    Node contribution_service = doc.createElement("contribution_service");        
+		    Node contribs = contrib.appendChild(contribution_service);
+		    
+		    //
+		    //New Node id_cserv       
+		    Node id_cserv = doc.createElement("id_cserv");        
+		    contribs.appendChild(id_cserv);
+		    id_cserv.setTextContent("");
+		    
+		    //
+		    //New Node id_contact       
+		    Node id_contacts = doc.createElement("id_contact");        
+		    contribs.appendChild(id_contacts);
+		    id_contacts.setTextContent("");
+		    
+		    //
+		    //New Node nom_cserv       
+		    Node nom_cserv = doc.createElement("nom_cserv");        
+		    contribs.appendChild(nom_cserv);
+		    nom_cserv.setTextContent("");
+		    
+		    //
+		    //New Node valeur_cserv       
+		    Node valeur_cserv = doc.createElement("valeur_cserv");        
+		    contribs.appendChild(valeur_cserv);
+		    valeur_cserv.setTextContent("");
+		    
+		    //
+		    //New Node description_cserv       
+		    Node description_cserv = doc.createElement("description_cserv");        
+		    contribs.appendChild(description_cserv);
+		    description_cserv.setTextContent("");
+	      
+		    // writing xml file
+		    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		    Transformer transformer = transformerFactory.newTransformer();
+		    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+		    transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+		    transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+		    DOMSource source = new DOMSource(doc);
+		     File outputFile = eventXML;
+		    StreamResult resulta = new StreamResult(outputFile);
+		    // creating output stream
+		    transformer.transform(source, resulta);
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
 	}
 	
 	/**
