@@ -29,7 +29,7 @@ public class MessageTexte extends $Message {
 		this.contenu = msg;
 		this.destinataire = dest;
 		this.expediteur = exp;
-		this.date = new Date();
+		this.date= new Date().toString();
 	}
 
 	/**

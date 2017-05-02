@@ -13,7 +13,7 @@ import Structure_Contact.Contact;
 public abstract class $Message implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	protected Date date;
+	protected String date;
 	protected Contact expediteur;
 	protected Contact destinataire;
 
@@ -22,7 +22,7 @@ public abstract class $Message implements Serializable {
 	 * 
 	 * @return date La date du Message courant.
 	 */
-	public Date getDate() {
+	public String getDate() {
 		return this.date;
 	}
 
@@ -60,6 +60,11 @@ public abstract class $Message implements Serializable {
 	 */
 	public void setDestinataire(Contact contact) {
 		this.destinataire = contact;
+	}
+	
+	public void setDate(String dt)
+	{
+		this.date=dt;
 	}
 
 }
