@@ -1,0 +1,64 @@
+
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="evenements">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="evenement" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="nom"/>
+              <xs:element type="xs:string" name="date"/>
+              <xs:element type="xs:string" name="lieu"/>
+              <xs:element type="xs:string" name="description_event"/>
+              <xs:element type="xs:string" name="createur"/>
+              <xs:element name="contributions">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="contributions_bien">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="contribution_bien" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="id_cbien"/>
+                                <xs:element type="xs:string" name="id_contact"/>
+                                <xs:element type="xs:string" name="nom_cbien"/>
+                                <xs:element type="xs:string" name="quantite"/>
+                                <xs:element type="xs:string" name="unite"/>
+                                <xs:element type="xs:string" name="valeur_cbien"/>
+                                <xs:element type="xs:string" name="description_cbien"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="contributions_service">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="contribution_service">
+                            <xs:complexType mixed="true">
+                              <xs:sequence>
+                                <xs:element type="xs:byte" name="id_cserv" minOccurs="0"/>
+                                <xs:element type="xs:byte" name="id_contact" minOccurs="0"/>
+                                <xs:element type="xs:string" name="nom_cserv" minOccurs="0"/>
+                                <xs:element type="xs:short" name="valeur_cbien" minOccurs="0"/>
+                                <xs:element type="xs:string" name="description_cbien" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

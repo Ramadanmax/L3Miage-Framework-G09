@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<evenements>
+  <evenement>
+    <nom>Le Vin du côté de chez vous</nom>
+    <date>02122016</date>
+    <lieu>Valence</lieu>
+    <description_event>Degustation de vin dans la salle principale du château de Bourg-Jacques</description_event>
+    <createur>raj23</createur>
+    <contributions>
+     <contributions_bien>
+      <contribution_bien>
+        <id_cbien>53001</id_cbien>
+        <id_contact>1</id_contact>
+        <nom_cbien>Vin de Bonnefacture</nom_cbien>
+        <quantite>40</quantite>
+        <unite>Litre</unite>
+        <valeur_cbien>500</valeur_cbien>
+        <description_cbien>Vin de Bonnefacture issu des vignes samarées des Bas-Rhin du Haut-Rhône</description_cbien>
+      </contribution_bien>
+      <contribution_bien>
+        <id_cbien>53002</id_cbien>
+        <id_contact>1</id_contact>
+        <nom_cbien>Vin Chapoutier</nom_cbien>
+        <quantite>28</quantite>
+        <unite>Litre</unite>
+        <valeur_cbien>1229,2</valeur_cbien>
+        <description_cbien>Chapoutier - Côte Rotie "Les Bécasses" 2014 - Le blason “Fac et spera” (Fais et espère), devenu devise de la maison M. Chapoutier, exprime bien la vision du métier de ce vigneron hors norme et à l'esprit pionnier. Il s'est fait fort de modifier la signature gustative du domaine pour retrouver la différence et la typicité de chaque terroir. Les vignes en terrasse construites par les Romains au siècle précédant notre ère, les ont rendues exceptionnellement dures à travailler, mais ce sont justement ces conditions de culture très typiques qui ont permis de produire ce grand vin.</description_cbien>
+      </contribution_bien>
+      </contributions_bien>
+     <contributions_service>
+      <contribution_service>
+        <id_cserv>10</id_cserv>
+        <id_contact>3</id_contact>
+        <nom_cserv>Zeus - Securité</nom_cserv>
+        <valeur_cbien>300</valeur_cbien>
+        <description_cbien>Service de sécurité de la société Zeus basée à Lyon</description_cbien>
+      </contribution_service>
+     </contributions_service>
+    </contributions>
+  </evenement>
+  <evenement>
+    <nom>Festival du Nez Rouge</nom>
+    <date>05022017</date>
+    <lieu>Pierrelatte</lieu>
+    <description_event>Fête du vin à Pierrelate accompagnée de diverses activités</description_event>
+    <createur>juntir1</createur>
+    <contributions>
+     <contributions_bien>
+      <contribution_bien>
+        <id_cbien>6</id_cbien>
+        <id_contact>7</id_contact>
+        <nom_cbien>Vin de Bourgogne Rubis</nom_cbien>
+        <quantite>80</quantite>
+        <unite>Litre</unite>
+        <valeur_cbien>720</valeur_cbien>
+        <description_cbien>Vin rouge de Bourgogne</description_cbien>
+      </contribution_bien>
+     </contributions_bien>
+     <contributions_service>
+     </contributions_service>
+    </contributions>
+  </evenement>
+</evenements>
