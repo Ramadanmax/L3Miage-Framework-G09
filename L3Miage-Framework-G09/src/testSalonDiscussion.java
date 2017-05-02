@@ -1,9 +1,11 @@
 
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import Module_Messagerie.MessageTexte;
+import Module_Messagerie.SalonDiscussion;
 import Module_Messagerie.ServeurMessagerie;
 import Structure_Contact.Adresse;
 import Structure_Contact.Contact;
@@ -22,22 +24,27 @@ public class testSalonDiscussion {
 		Contact c3 = new Contact("Charlotte Jondet", adresseC3, "charlottejondet@hotmail.fr");
 
 
-		Registry reg = LocateRegistry.createRegistry(5555);
+/*		Registry reg = LocateRegistry.createRegistry(5555);
 		ServeurMessagerie msgServ = new ServeurMessagerie("testSalon",reg);
 		
 		msgServ.getSalonDiscussion().ajouterContact(c1);
 		msgServ.getSalonDiscussion().ajouterContact(c2);
 		msgServ.getSalonDiscussion().ajouterContact(c3);
 		//envoi de deux messages
-		msgServ.getSalonDiscussion().envoyerMessage(new MessageTexte(c1,c2,"Hello"));
-		//Cr.envoyerMessage(new MessageTexte(c2, c1, "lut"));
-
-//		System.out.println(Cr.AfficherMessages());
+	    msgServ.getSalonDiscussion().envoyerMessage(new MessageTexte(c1,c2,"Hello"));*/
+		
+		
+		SalonDiscussion Cr = new SalonDiscussion("testSalon");
+	/*	Cr.ajouterContact(c1);
+		Cr.ajouterContact(c2);
+		Cr.envoyerMessage(new MessageTexte(c2, c1, "lut"));
+*/
+		System.out.println("1 :"+Cr.AfficherMessages());
 		
 		//Cr.save();
-		//Cr.load();
+		Cr.load();
 		
-		
+		System.out.println("2 :"+Cr.AfficherMessages());
 
 	}
 

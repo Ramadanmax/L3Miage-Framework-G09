@@ -8,11 +8,30 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import Module_Annuaire.Annuaire;
+import Structure_Contact.Adresse;
 import Structure_Contact.Contact;
 
 /**
@@ -26,8 +45,9 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 
 	private static final long serialVersionUID = 1L;
 	private String nomSalonDiscussion;
+	private String xmlFile;
 	private List<MessageTexte> messages;
-	private List<Contact> contacts;
+	private Annuaire contacts;
 
 	/**
 	 * Constructeur d'une ChatRoomImpl.
@@ -40,7 +60,8 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 		super();
 		this.nomSalonDiscussion = nom;
 		this.messages = new ArrayList<MessageTexte>();
-		this.contacts = new ArrayList<Contact>();
+		this.contacts = new Annuaire();
+		this.xmlFile=this.nomSalonDiscussion+".xml";
 
 	}
 
@@ -58,8 +79,8 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 	}
 
 	/**
-	 * fonction renvoyant la liste de tous les messages enregisté dans l'attribu
-	 * message de la classe
+	 * fonction renvoyant la liste de tous les messages enregisté dans
+	 * l'attribu message de la classe
 	 * 
 	 * @return messages La liste messages.
 	 */
@@ -69,15 +90,15 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 	}
 
 	/**
-	 * fonction renvoyant la liste de tous les contacts enregisté dans l'attribu
-	 * contacts de la classe représentant toutes les personne participant à la
-	 * chat room
+	 * fonction renvoyant la liste de tous les contacts enregisté dans
+	 * l'attribu contacts de la classe représentant toutes les personne
+	 * participant à la chat room
 	 * 
 	 * @return contacts La liste contacts.
 	 */
 	@Override
 	public List<Contact> getcontacts() throws RemoteException {
-		return contacts;
+		return this.contacts.getContacts();
 	}
 
 	/**
@@ -97,7 +118,7 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 	 */
 	@Override
 	public void ajouterContact(Contact contact) throws RemoteException {
-		contacts.add(contact);
+		contacts.ajouterContact(contact);
 	}
 
 	/**
@@ -109,57 +130,197 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 	 */
 	@Override
 	public void supprimerContact(Contact contact) throws RemoteException {
-		contacts.remove(contact);
+		contacts.supprimerContact(contact);
 	}
 
-	/*
-	 * public void save() { try { DataOutputStream dos = new DataOutputStream(
-	 * new BufferedOutputStream(new FileOutputStream(this.getNomChatRoom())));
-	 * 
-	 * StringBuffer strBuff = new StringBuffer();
-	 * strBuff.append(this.AfficherContacts()); strBuff.append("Messages : \n");
-	 * strBuff.append(this.AfficherMessages());
-	 * 
-	 * dos.writeChars(strBuff.toString()); dos.close();
-	 * 
-	 * } catch (FileNotFoundException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
-	 * catch block e.printStackTrace(); } }
-	 * 
-	 * public void load() { BufferedReader br; try { br = new BufferedReader(new
-	 * FileReader(new File(this.getNomChatRoom())));
-	 * 
-	 * String line; StringBuffer ln; while (((line = br.readLine()) != null)) {
-	 * if (line.startsWith(" Messages")){System.out.println(
-	 * "Hellllllllllllloooooooooooooooooooooooooo");} ln = new
-	 * StringBuffer(line); System.out.println(ln); }
-	 * 
-	 * while ( (line = br.readLine()) != null) { ln = new StringBuffer(line);
-	 * 
-	 * } br.close(); } catch (FileNotFoundException e) { // TODO Auto-generated
-	 * catch block e.printStackTrace(); } catch (IOException e) { // TODO
-	 * Auto-generated catch block e.printStackTrace(); } }
-	 * 
-	 * /** fonction renvoyant un String contenant les messages dans un format
+	public void save() {
+
+		try {
+
+			OutputStream out = new FileOutputStream(this.xmlFile);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder p = dbFactory.newDocumentBuilder();
+			Document doc = p.newDocument();
+
+			Element Salon = (Element) doc.createElement("Salon");
+			
+			Element contacts = (Element) doc.createElement("contacts");
+
+			for (int i = 0; i < this.getcontacts().size(); i++) {
+				Contact contactCourant = this.getcontacts().get(i);
+
+				Element contact = (Element) doc.createElement("contact");
+				Element nom = (Element) doc.createElement("nom");
+				Element mail = (Element) doc.createElement("mail");
+				Element adresse = (Element) doc.createElement("adresse");
+				Element numRue = (Element) doc.createElement("numRue");
+				Element nomRue = (Element) doc.createElement("nomRue");
+				Element CP = (Element) doc.createElement("CP");
+				Element Ville = (Element) doc.createElement("ville");
+				Element pays = (Element) doc.createElement("pays");
+
+				nom.setTextContent(contactCourant.getNom());
+				mail.setTextContent(contactCourant.getMail());
+
+				numRue.setTextContent(""+contactCourant.getAdresse().getNumRue());
+				nomRue.setTextContent(contactCourant.getAdresse().getNomRue());
+				CP.setTextContent(contactCourant.getAdresse().getCodePostal());
+				Ville.setTextContent(contactCourant.getAdresse().getVille());
+				pays.setTextContent(contactCourant.getAdresse().getPays());
+
+				adresse.appendChild(numRue);
+				adresse.appendChild(nomRue);
+				adresse.appendChild(Ville);
+				adresse.appendChild(CP);
+				adresse.appendChild(pays);
+
+				contact.appendChild(nom);
+				contact.appendChild(adresse);
+				contact.appendChild(mail);
+
+				contacts.appendChild(contact);
+			}
+
+			Element messages = (Element) doc.createElement("messages");
+
+			for (int ind = 0; ind < this.messages.size(); ind++) {
+				MessageTexte messageCourant = this.messages.get(ind);
+
+				Element message = (Element) doc.createElement("message");
+				Element expediteur = (Element) doc.createElement("expediteur");
+				Element destinataire = (Element) doc.createElement("destinataire");
+				Element contenu = (Element) doc.createElement("contenu");
+				Element date = (Element) doc.createElement("date");
+
+				expediteur.setTextContent(messageCourant.getExpediteur().getNom());
+				destinataire.setTextContent(messageCourant.getDestinataire().getNom());
+				date.setTextContent(messageCourant.getDate().toString());
+				contenu.setTextContent(messageCourant.getcontenu());
+
+				message.appendChild(expediteur);
+				message.appendChild(destinataire);
+				message.appendChild(date);
+				message.appendChild(contenu);
+
+				messages.appendChild(message);
+			}
+
+			
+			Salon.appendChild(contacts);
+			Salon.appendChild(messages);
+			
+			doc.appendChild(Salon);
+
+			final TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			final Transformer transformer = transformerFactory.newTransformer();
+			final DOMSource source = new DOMSource(doc);
+			final StreamResult sortie = new StreamResult(this.xmlFile);
+
+			transformer.setOutputProperty(OutputKeys.VERSION, "1.0");
+			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+			transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
+
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+			transformer.transform(source, sortie);
+
+		} catch (ParserConfigurationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void load() {
+
+		try {
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder p = dbFactory.newDocumentBuilder();
+			Document doc = p.parse(xmlFile);
+			
+			for (int i = 0; i < doc.getElementsByTagName("contact").getLength(); i++) {
+				NodeList elCourant = doc.getElementsByTagName("contact").item(i).getChildNodes();
+				
+				String nom = elCourant.item(1).getTextContent();
+				NodeList nodeAdr = elCourant.item(3).getChildNodes();
+				String email = elCourant.item(5).getTextContent();
+				Adresse adr = new Adresse(Integer.parseInt(nodeAdr.item(1).getTextContent()), nodeAdr.item(3).getTextContent(),nodeAdr.item(5).getTextContent(), nodeAdr.item(7).getTextContent(),nodeAdr.item(9).getTextContent());
+				contacts.ajouterContact(new Contact(nom, adr, email));
+
+			}
+
+			for (int i = 0; i < doc.getElementsByTagName("message").getLength(); i++) {
+				NodeList elCourant = doc.getElementsByTagName("message").item(i).getChildNodes();
+
+				Contact expediteur = null;
+				Contact destinataire = null;
+
+				for (int ind = 0; ind < this.getcontacts().size(); ind++) {
+					if (this.getcontacts().get(ind).getNom() == elCourant.item(1).getTextContent()) {
+						expediteur = this.getcontacts().get(ind);
+					} else {
+						expediteur = new Contact(elCourant.item(1).getTextContent(), null, "inconnu@incnnu.com");
+					}
+
+					if (this.getcontacts().get(ind).getNom() == elCourant.item(3).getTextContent()) {
+						destinataire = this.getcontacts().get(ind);
+					} else {
+						destinataire = new Contact(elCourant.item(3).getTextContent(), null, "inconnu@incnnu.com");
+					}
+				}
+
+				//Date date = new Date elCourant.item(5).getTextContent();
+				String contenu = elCourant.item(7).getTextContent();
+
+				MessageTexte msg = new MessageTexte(expediteur, destinataire, contenu);
+				msg.setDate(elCourant.item(5).getTextContent());
+				messages.add(msg);
+			}
+
+		} catch (SAXException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * fonction renvoyant un String contenant les messages dans un format
 	 * simpliste
 	 * 
 	 * @return les Messges de la chat Room
-	 */
-	/*
-	 * public String AfficherMessages() { String chaine = ""; for (int i = 0; i
-	 * < this.getMessages().size(); i++) { chaine +=
-	 * this.getMessages().get(i).toString() + "\n" +
-	 * "######################################################\n";
+	 * @throws RemoteException
 	 * 
-	 * } return chaine; }
-	 * 
-	 * /** fonction renvoyant un String contenant les contacts de la chat Room
+	 **/
+	public String AfficherMessages() throws RemoteException {
+		String chaine = "";
+		for (int i = 0; i < this.getMessages().size(); i++) {
+			chaine += this.getMessages().get(i).toString() + "\n"
+					+ "######################################################\n";
+		}
+		return chaine;
+	}
+
+	/**
+	 * fonction renvoyant un String contenant les contacts de la chat Room
 	 * 
 	 * @return les contacts de la chat Room
+	 * @throws RemoteException
 	 */
-	/*
-	 * public String AfficherContacts() { String chaine = ""; for (int i = 0; i
-	 * < this.getcontacts().size(); i++) { chaine +=
-	 * this.getcontacts().get(i).toString() + "\n"; } return chaine; }
-	 */
+
+	public String AfficherContacts() throws RemoteException {
+		String chaine = "";
+		for (int i = 0; i < this.getcontacts().size(); i++) {
+			chaine += this.getcontacts().get(i).toString() + "\n";
+		}
+		return chaine;
+	}
+
 }
