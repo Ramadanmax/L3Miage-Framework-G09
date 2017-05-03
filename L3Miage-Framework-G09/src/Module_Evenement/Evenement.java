@@ -80,10 +80,15 @@ public class Evenement {
 	 * lieu la date, la description et le createur.
 	 * 
 	 * @param nom
+	 *            Le nom du nouvel evenement.
 	 * @param lieu
+	 *            Le lieu du nouvel evenement.
 	 * @param date
+	 *            La date de création du nouvel événement
 	 * @param createur
+	 *            Le nom du créateur du nouvel événement
 	 * @param description
+	 *            La description du nouveau evenement.
 	 */
 	public Evenement(String nom, String lieu, int date,String description, String createur) {
 		this.nom = nom;
@@ -126,6 +131,7 @@ public class Evenement {
 	 * La méthode aEuLieu, qui prend en paramètre un fichier XML, renvoie True si l'événement à déjà eu lieu, False sinon.
 	 * 
 	 * @param eventXML
+	 *                Le nom du fichier XML contenant l'événement à vérifier
 	 * @return estPassee
 	 */
 	/*@
@@ -169,6 +175,7 @@ public class Evenement {
 	 * La méthode dateEstValidee, qui prend en paramètre un fichier XML, renvoie True si la date est correcte, False sinon.
 	 * 
 	 * @param eventXML
+	 *                Le nom du fichier XML contenant l'événement à vérifier
 	 * @return dateValide
 	 */
 	/*@
@@ -209,6 +216,7 @@ public class Evenement {
 	 * La méthode nomEstValidee, qui prend en paramètre un fichier XML, renvoie True si le nom est correcte, False sinon.
 	 * 
 	 * @param eventXML
+	 *                Le nom du fichier XML contenant l'événement à vérifier
 	 * @return nomValide
 	 */
 	/*@
@@ -242,6 +250,7 @@ public class Evenement {
 	 * La méthode lieuEstValidee, qui prend en paramètre un fichier XML, renvoie True si le lieu est correcte, False sinon.
 	 * 
 	 * @param eventXML
+	 *                Le nom du fichier XML contenant l'événement à vérifier
 	 * @return nomValide
 	 */
 	/*@
@@ -277,7 +286,9 @@ public class Evenement {
 	 * un nouvel événement.
 	 * 
 	 * @param evt
+	 *           Le nom de l'événement à compléter
 	 * @param eventXML
+	 *                Le nom du fichier XML contenant l'événement à vérifier
 	 */
 	/*@
 	 * requires annee.length() = 4;

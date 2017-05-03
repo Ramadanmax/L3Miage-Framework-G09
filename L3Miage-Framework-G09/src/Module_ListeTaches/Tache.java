@@ -53,6 +53,7 @@ public class Tache {
 	 * La méthode aEuLieu, qui prend en paramètre un fichier XML, renvoie True si la tâche à déjà eu lieu, False sinon.
 	 * 
 	 * @param eventXML
+	 *                Le nom du fichier XML contenant l'événement à vérifier
 	 * @return estPassee
 	 */
 	/*@
@@ -82,6 +83,7 @@ public class Tache {
 	 * La méthode dateEstValidee, qui prend en paramètre un fichier XML, renvoie True si la date est correcte, False sinon.
 	 * 
 	 * @param eventXML
+	 *                Le nom du fichier XML contenant l'événement à vérifier
 	 * @return dateValide
 	 */
 	/*@
@@ -122,8 +124,12 @@ public class Tache {
 	 * La méthode nomEstValidee, qui prend en paramètre un fichier XML, renvoie True si le nom est correcte, False sinon.
 	 * 
 	 * @param eventXML
+	 *                Le nom du fichier XML contenant l'événement à vérifier
 	 * @return nomValide
 	 */
+	/*@
+	 * requires nom.length() < 100; 
+	 @*/
 	public boolean nomEstValide(File eventXML){
 		try{
 			// analyse du document
