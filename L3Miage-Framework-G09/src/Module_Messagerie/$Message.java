@@ -60,7 +60,10 @@ public abstract class $Message implements Serializable {
 	public void setDestinataire(Contact contact) {
 		this.destinataire = contact;
 	}
-	
+	/**
+	 * fonction modifiant la Date du message
+	 * @param dt La nouvelle date
+	 */
 	public void setDate(String dt)
 	{
 		this.date=dt;

@@ -47,6 +47,9 @@ public class ServeurMessagerie {
 		}
 	}
 
+	/**
+	 * fonction qui ferme proprement le RMI en détachant les référence du Salon assossié
+	 */
 	public void fermetureServeurMessagerie()
 	{
 		try {

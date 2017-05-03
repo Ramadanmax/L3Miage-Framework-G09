@@ -128,7 +128,9 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 		this.contacts=ann;
 	}
 	
-	
+	/**
+	 * fonction sauvegardant l'etat de l'object dans un Xml portant sont nom
+	 */
 	public void save() {
 
 		try {
@@ -234,6 +236,9 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 
 	}
 
+	/**
+	 * fonction récupérant les données enregistrer dans un Xml du nom de ce Salon
+	 */
 	public void load() {
 
 		try {
