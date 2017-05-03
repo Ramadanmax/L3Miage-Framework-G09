@@ -24,7 +24,7 @@ public class Contact implements Serializable {
 	private String mail;
 	private String login;
 
-	private List<_SalonDiscussion> chatRooms;
+	private List<_SalonDiscussion> salonDiscussion;
 	private Annuaire annuaire;
 	private Agenda agenda;
 	private ListeTaches listeTaches;
@@ -46,7 +46,7 @@ public class Contact implements Serializable {
 		this.login=login;
 		this.annuaire = new Annuaire();
 		this.agenda = new Agenda();
-		this.chatRooms = new ArrayList<_SalonDiscussion>();
+		this.salonDiscussion = new ArrayList<_SalonDiscussion>();
 		this.listeTaches = new ListeTaches();
 
 		// Verification de la validite du mail
@@ -100,7 +100,7 @@ public class Contact implements Serializable {
 	 * @return La liste de ChatRoom du Contact courant.
 	 */
 	public List<_SalonDiscussion> getChatRooms() {
-		return chatRooms;
+		return salonDiscussion;
 	}
 
 	/**
