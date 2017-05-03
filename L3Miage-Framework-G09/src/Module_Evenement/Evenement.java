@@ -128,6 +128,11 @@ public class Evenement {
 	 * @param eventXML
 	 * @return estPassee
 	 */
+	/*@
+	 * requires date.getDayOfMonth() < jour;
+	 * requires date.getMonthValue() < mois;
+	 * date.getYear() < annee;
+	 @*/
 	public boolean aEuLieu(File eventXML){
 		try{
 			// analyse du document
@@ -206,6 +211,9 @@ public class Evenement {
 	 * @param eventXML
 	 * @return nomValide
 	 */
+	/*@
+	 * requires nom.length() < 100; 
+	 @*/
 	public boolean nomEstValide(File eventXML){
 		try{
 			// analyse du document
@@ -236,6 +244,9 @@ public class Evenement {
 	 * @param eventXML
 	 * @return nomValide
 	 */
+	/*@
+	 * requires lieu.length() < 100;
+	 @*/
 	public boolean lieuEstValide(File eventXML){
 		try{
 			// analyse du document
@@ -260,6 +271,17 @@ public class Evenement {
 		return lieuValide;
 	}
 	
+	/**
+	 * 
+	 * La méthode creationEvt, qui prend en paramètre un evenement et un fichier XML, permet d'éditer le fichier XML event.xml, en y ajoutant
+	 * un nouvel événement.
+	 * 
+	 * @param evt
+	 * @param eventXML
+	 */
+	/*@
+	 * requires annee.length() = 4;
+	 @*/
 	public void creationEvt(Evenement evt, File eventXML){
 
 		 try {
