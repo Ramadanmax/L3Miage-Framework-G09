@@ -55,9 +55,13 @@ public class Tache {
 	 * @param eventXML
 	 * @return estPassee
 	 */
+	/*@
+	 * requires (mois%2 == 0 && mois < 7 && jour < 31 && jour > 0) || (mois%2 == 1 && mois < 7 && jour < 32 && jour > 0) || (mois%2 == 0 && mois > 7 && jour < 32 && jour > 0) ||(mois%2 == 1 && mois > 6 && jour < 31 && jour > 0); 
+	 * requires mois < 13 && mois > 0;
+	 * requires annee.length() = 4;
+	 @*/
 	public boolean aEuLieu(File eventXML){
 		try{
-			
 			int test = getDate();
 			LocalDate date = LocalDate.now(); // Date d'aujourd'hui
 			annee = test / 10000;
@@ -80,6 +84,11 @@ public class Tache {
 	 * @param eventXML
 	 * @return dateValide
 	 */
+	/*@
+	 * requires (mois%2 == 0 && mois < 7 && jour < 31 && jour > 0) || (mois%2 == 1 && mois < 7 && jour < 32 && jour > 0) || (mois%2 == 0 && mois > 7 && jour < 32 && jour > 0) ||(mois%2 == 1 && mois > 6 && jour < 31 && jour > 0); 
+	 * requires mois < 13 && mois > 0;
+	 * requires annee.length() = 4;
+	 @*/
 	public boolean dateEstValidee(File eventXML){
 		try{
 			// analyse du document
