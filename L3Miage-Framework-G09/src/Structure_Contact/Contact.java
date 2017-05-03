@@ -174,6 +174,6 @@ public class Contact implements Serializable {
 	 * Methode toString d'un Contact.
 	 */
 	public String toString() {
-		return this.nom + " - " + this.mail + " - " + this.adresse;
+		return this.nom + " - " + this.mail + " - " + this.adresse + " - " + this.login;
 	}
 }

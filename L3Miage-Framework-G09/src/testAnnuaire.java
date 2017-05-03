@@ -12,9 +12,9 @@ public class testAnnuaire {
 				"France");
 
 		// Creation des contacts
-		Contact c1 = new Contact("Virgil Bontempi", adresseC1, "virgilbontempi@hotmail.fr");
-		Contact c2 = new Contact("Maxime Vanbossel", adresseC2, "maximevanbossel@hotmail.fr");
-		Contact c3 = new Contact("Charlotte Jondet", adresseC3, "charlottejondet@hotmail.fr");
+		Contact c1 = new Contact("Virgil Bontempi", adresseC1, "virgilbontempi@hotmail.fr", "virgilb");
+		Contact c2 = new Contact("Maxime Vanbossel", adresseC2, "maximevanbossel@hotmail.fr", "maximev");
+		Contact c3 = new Contact("Charlotte Jondet", adresseC3, "charlottejondet@hotmail.fr", "charlottej");
 
 		// Ajout de Contacts dans l'Annuaire de c1
 		c1.getAnnuaire().ajouterContact(c2);

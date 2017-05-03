@@ -11,7 +11,7 @@ public class testListeTaches {
 		Adresse adresseC1 = new Adresse(20, "rue des coteaux", "Marsanne", "26740", "France");
 
 		// Creation d'un Contact
-		Contact c1 = new Contact("Virgil Bontempi", adresseC1, "virgilbontempi@hotmail.fr");
+		Contact c1 = new Contact("Virgil Bontempi", adresseC1, "virgilbontempi@hotmail.fr", "virgilb");
 
 		// Creation de Tasks
 		Tache t1 = new Tache("Nourrir le chat", 20160224);

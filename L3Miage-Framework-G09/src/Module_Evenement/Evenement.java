@@ -335,11 +335,6 @@ public class Evenement {
 		    Node createur = doc.createElement("createur");        
 		    result.appendChild(createur);
 		    createur.setTextContent(evt.createur);
-		    
-		    //
-		    //New Node contributions       
-		    Node contributions = doc.createElement("contributions");        
-		    Node contrib = result.appendChild(contributions);
 	      
 		    // writing xml file
 		    TransformerFactory transformerFactory = TransformerFactory.newInstance();
