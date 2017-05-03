@@ -163,6 +163,7 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 				Element CP = (Element) doc.createElement("CP");
 				Element Ville = (Element) doc.createElement("ville");
 				Element pays = (Element) doc.createElement("pays");
+				Element login = (Element) doc.createElement("login");
 
 				nom.setTextContent(contactCourant.getNom());
 				mail.setTextContent(contactCourant.getMail());
@@ -172,6 +173,8 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 				CP.setTextContent(contactCourant.getAdresse().getCodePostal());
 				Ville.setTextContent(contactCourant.getAdresse().getVille());
 				pays.setTextContent(contactCourant.getAdresse().getPays());
+				
+				login.setTextContent(contactCourant.getLogin());
 
 				adresse.appendChild(numRue);
 				adresse.appendChild(nomRue);
@@ -182,6 +185,7 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 				contact.appendChild(nom);
 				contact.appendChild(adresse);
 				contact.appendChild(mail);
+				contact.appendChild(login);
 
 				contacts.appendChild(contact);
 			}
@@ -254,7 +258,8 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 				NodeList nodeAdr = elCourant.item(3).getChildNodes();
 				String email = elCourant.item(5).getTextContent();
 				Adresse adr = new Adresse(Integer.parseInt(nodeAdr.item(1).getTextContent()), nodeAdr.item(3).getTextContent(),nodeAdr.item(5).getTextContent(), nodeAdr.item(7).getTextContent(),nodeAdr.item(9).getTextContent());
-				contacts.ajouterContact(new Contact(nom, adr, email));
+				String login = elCourant.item(7).getTextContent();
+				contacts.ajouterContact(new Contact(nom, adr, email,login));
 
 			}
 
@@ -268,13 +273,13 @@ public class SalonDiscussion extends UnicastRemoteObject implements _SalonDiscus
 					if (this.getcontacts().get(ind).getNom() == elCourant.item(1).getTextContent()) {
 						expediteur = this.getcontacts().get(ind);
 					} else {
-						expediteur = new Contact(elCourant.item(1).getTextContent(), null, "inconnu@incnnu.com");
+						expediteur = new Contact(elCourant.item(1).getTextContent(), null, "inconnu@incnnu.com", "inconnu");
 					}
 
 					if (this.getcontacts().get(ind).getNom() == elCourant.item(3).getTextContent()) {
 						destinataire = this.getcontacts().get(ind);
 					} else {
-						destinataire = new Contact(elCourant.item(3).getTextContent(), null, "inconnu@incnnu.com");
+						destinataire = new Contact(elCourant.item(3).getTextContent(), null, "inconnu@incnnu.com", "inconnu");
 					}
 				}
 

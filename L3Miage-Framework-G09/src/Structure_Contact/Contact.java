@@ -22,12 +22,13 @@ public class Contact implements Serializable {
 	private String nom;
 	private Adresse adresse;
 	private String mail;
+	private String login;
 
 	private List<_SalonDiscussion> chatRooms;
 	private Annuaire annuaire;
 	private Agenda agenda;
 	private ListeTaches listeTaches;
-
+	
 	/**
 	 * Constructeur d'un Contact.
 	 * 
@@ -39,9 +40,10 @@ public class Contact implements Serializable {
 	 *            Le mail d'un Contact.
 	 * @throws FrameworkException
 	 */
-	public Contact(String nom, Adresse adresse, String mail) throws FrameworkException {
+	public Contact(String nom, Adresse adresse, String mail, String login) throws FrameworkException {
 		this.nom = nom;
 		this.adresse = adresse;
+		this.login=login;
 		this.annuaire = new Annuaire();
 		this.agenda = new Agenda();
 		this.chatRooms = new ArrayList<_SalonDiscussion>();
@@ -72,6 +74,15 @@ public class Contact implements Serializable {
 	 */
 	public Adresse getAdresse() {
 		return adresse;
+	}
+	
+	/**
+	 * Getter du login d'un Contact.
+	 * 
+	 * @return Login du Contact courant.
+	 */
+	public String getLogin() {
+		return login;
 	}
 
 	/**
