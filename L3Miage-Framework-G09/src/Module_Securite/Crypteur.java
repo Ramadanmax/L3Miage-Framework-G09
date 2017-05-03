@@ -12,9 +12,8 @@ import java.io.Serializable;
  */
 public class Crypteur extends Securite implements Serializable{
 
-	/**
-	 * 
-	 */
+
+	
 	private static final long serialVersionUID = 1L;
 	private String msgCrypte;
 
@@ -23,6 +22,7 @@ public class Crypteur extends Securite implements Serializable{
 	 * et utilise la méthode cryptage pour crypter cette chaine.
 	 * 
 	 * @param msgVierge
+	 * 				   Message à crypter
 	 */
 	public Crypteur(String msgVierge) {
 		msgCrypte = cryptage(msgVierge);
@@ -32,6 +32,7 @@ public class Crypteur extends Securite implements Serializable{
 	 * La méthode getMsgCrypte retourne la chaine de caractères
 	 * 
 	 * @return msgCrypte
+	 * 				   Message crypté
 	 */
 	public String getMsgCrypte() {
 		return msgCrypte;
@@ -42,6 +43,7 @@ public class Crypteur extends Securite implements Serializable{
 	 * tabCrypte et charToString pour crypter la chaine de caractères récupérée.
 	 * 
 	 * @param message
+	 * 				 Message qui va être crypté avec l'aide des méthodes de cryptage
 	 * @return charToString(crypte)
 	 */
 	private String cryptage(String message) {
@@ -56,6 +58,7 @@ public class Crypteur extends Securite implements Serializable{
 	 * d'entiers (équivalent Ascii de chaque caractère)
 	 * 
 	 * @param message
+	 * 			     Message qui va être crypté en tableau d'entier
 	 * @return tabAscii
 	 */
 	public int[] tabAscii(String message) {
@@ -73,7 +76,9 @@ public class Crypteur extends Securite implements Serializable{
 	 * l'utilisation des nombres premiers)
 	 * 
 	 * @param tabAscii
+	 * 				  Tableau d'entier contenant la valeur correspondante d'un caractère en ascii
 	 * @param tabNbPremier
+	 * 					  Tableau d'entier qui contient la liste des n premiers nombres premiers
 	 * @return tabCrypte
 	 */
 	public char[] tabCrypte(int[] tabAscii, int[] tabNbPremier) {

@@ -22,8 +22,13 @@ public class Securite implements Serializable{
 	 * aux n premiers nombres entiers. n étant le nombre de caractères dans la chaine de caractères récupérée.
 	 * 
 	 * @param message
+	 * 	  			 Message de n caractère permettant de créer le tableau des n nombres premiers
 	 * @return tabNbPremier
 	 */
+	/*@
+	 * require message != "";
+	 * ensure tabNbPremier != "";
+	 @*/
 	public int[] tabNbPremier(String message){
 		int[] tabNbPremier = null;
 		int b = message.length();
@@ -58,8 +63,12 @@ public class Securite implements Serializable{
 	 * La méthode stringToChar transforme une chaîne de caractères en un tableau de caractères
 	 * 
 	 * @param msgString
+	 * 				    Message de n caractère utilisé pour créer un tableau de taille n-1
 	 * @return caractere
 	 */
+	/*@
+	 * ensure caractere != "";
+	 @*/
 	public char[] stringToChar(String msgString){
 		int a = msgString.length();
 		char[] caractere = new char[a];
@@ -73,8 +82,13 @@ public class Securite implements Serializable{
 	 * La méthode charToString transforme un tableau de caractères en une chaîne de caractères
 	 * 
 	 * @param caractere
+	 * 				   Tableau de taille n utilisé pour créer une chaîne de caractère de taille n+1
 	 * @return str
 	 */
+	/*@
+	 * require caractere != "";
+	 * ensure str != "";
+	 @*/
 	public String charToString(char[] caractere){
 		String str = new String(caractere);
 		return str;

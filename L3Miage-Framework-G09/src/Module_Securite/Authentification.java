@@ -26,12 +26,15 @@ public class Authentification {
 
 	/**
 	 * Le constructeur Authentification de cette classe réalise une
-	 * authentification à partir du login, du mot de passe et du fichier XML
+	 * authentification à partir de l'identifiant, du mot de passe et du fichier XML
 	 * fournit.
 	 * 
 	 * @param identifiant
+	 *                   Identifiant de l'utilisateur
 	 * @param motDePasse
+	 *                  Mot de passe de l'utilisateur
 	 * @param cheminXML
+	 *                 Chemin d'accès vers le fichier XML contenant les informations d'authentification de l'utilisateur
 	 */
 
 	public Authentification(){
@@ -39,6 +42,14 @@ public class Authentification {
 		this.motDePasse="";
 		this.valide = false;
 	}
+
+	/**
+	 * 
+	 * @param identifiant
+	 * 					 Identifiant de l'utilisateur
+	 * @param motDePasse
+	 * 					Mot de passe de l'utilisateur
+	 */
 	/*@
 	 * require identifiant !="";
 	 * require motDePasse != "";
@@ -56,6 +67,16 @@ public class Authentification {
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 	}
+	
+	/**
+	 * 
+	 * @param identifiant
+	 * 					 Identifiant de l'utilisateur
+	 * @param motDePasse
+	 * 					Mot de passe de l'utilisateur
+	 * @param cheminXML
+	 * 				   Chemin d'accès vers le fichier XML contenant les informations d'authentification de l'utilisateur
+	 */
 	/*@
 	 * require identifiant !="";
 	 * require motDePasse != "";
@@ -84,6 +105,18 @@ public class Authentification {
 	 * @return valide
 	 * @throws FrameworkException
 	 */
+	/*@
+	 * require identifiant !="";
+	 * require motDePasse != "";
+	 * require identifiant.length() < 15
+	 * require motDePasse > 3
+	 * require motDePasse < 30
+	 * ensures identifiant.equals(document.getElementsByTagName("login").item(i).getTextContent();
+	 * ensures motDePasse.equals(document.getElementsByTagName("pwd").item(i).getTextContent();
+	 * ensures identifiant.length() < 15
+	 * ensures motDePasse > 3
+	 * ensures motDePasse < 30
+	 @*/
 	public boolean reconnaissance() throws FrameworkException {
 		try {
 
@@ -110,7 +143,28 @@ public class Authentification {
 		}
 		return valide;
 	}
-	public boolean reconnaissance(String login, String mdp) throws FrameworkException {
+	/**
+	 * 
+	 * @param identifiant
+	 *                   Identifiant de l'utilisateur
+	 * @param motDePasse
+	 *                  Mot de passe de l'utilisateur
+	 * @return valide
+	 * @throws FrameworkException
+	 */
+	/*@
+	 * require identifiant !="";
+	 * require motDePasse != "";
+	 * require identifiant.length() < 15
+	 * require motDePasse > 3
+	 * require motDePasse < 30
+	 * ensures identifiant.equals(document.getElementsByTagName("login").item(i).getTextContent();
+	 * ensures motDePasse.equals(document.getElementsByTagName("pwd").item(i).getTextContent();
+	 * ensures identifiant.length() < 15
+	 * ensures motDePasse > 3
+	 * ensures motDePasse < 30
+	 @*/
+	public boolean reconnaissance(String identifiant, String motDePasse) throws FrameworkException {
 		try {
 
 			// analyse du document
@@ -121,8 +175,8 @@ public class Authentification {
 			Document document = docBuilder.parse(cheminXML);
 
 			for (int i = 0; i < document.getElementsByTagName("login").getLength(); i++) {
-				if (login.equals(document.getElementsByTagName("login").item(i).getTextContent())
-						&& mdp.equals(document.getElementsByTagName("pwd").item(i).getTextContent())) {
+				if (identifiant.equals(document.getElementsByTagName("login").item(i).getTextContent())
+						&& motDePasse.equals(document.getElementsByTagName("pwd").item(i).getTextContent())) {
 					this.valide = true;
 				}
 
@@ -150,7 +204,7 @@ public class Authentification {
 	 * La méthode setIdentifiant met à jour le identifiant
 	 * 
 	 * @param identifiant
-	 *            identifiant a changer
+	 *            identifiant à mettre à jour
 	 */
 	public void setIdentifiant(String identifiant) {
 		this.identifiant = identifiant;
@@ -160,7 +214,7 @@ public class Authentification {
 	 * La méthode setMotDePasse met à jour le mot de passe
 	 * 
 	 * @param motDePasse
-	 *            the pwd to set
+	 *            mot de passe à mettre à jour
 	 */
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
@@ -179,7 +233,7 @@ public class Authentification {
 	 * La méthode setCheminXML met à jour le fichier XML
 	 * 
 	 * @param cheminXML
-	 *            the xMLName to set
+	 *            le fichier XML à mettre à jour
 	 */
 	public void setCheminXML(File cheminXML) {
 		this.cheminXML = cheminXML;

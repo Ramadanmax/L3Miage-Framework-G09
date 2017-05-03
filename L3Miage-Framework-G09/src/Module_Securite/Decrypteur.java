@@ -24,6 +24,7 @@ public class Decrypteur extends Securite implements Serializable{
 	 * (cryptée) et utilise la méthode decryptage pour décrypter cette chaine.
 	 * 
 	 * @param msgCrypte
+	 * 				   Message à décrypter
 	 */
 	public Decrypteur(String msgCrypte) {
 		msgDecrypte = decryptage(msgCrypte);
@@ -34,6 +35,7 @@ public class Decrypteur extends Securite implements Serializable{
 	 * La méthode getMsgDecrypte retourne le message décrypté
 	 * 
 	 * @return msgDecrypte
+	 * 					  Message dérypté
 	 */
 	public String getMsgDecrypte() {
 		return msgDecrypte;
@@ -45,6 +47,7 @@ public class Decrypteur extends Securite implements Serializable{
 	 * caractères précédemment cryptée.
 	 * 
 	 * @param message
+	 * 				 Message qui va être décrypté avec l'aide des méthodes de décryptage
 	 * @return charToString(decrypte)
 	 */
 	public String decryptage(String message) {
@@ -60,9 +63,15 @@ public class Decrypteur extends Securite implements Serializable{
 	 * cryptés (grâce à l'utilisation des nombres premiers)
 	 * 
 	 * @param tabNbPremier
+	 * 					  Tableau d'entier qui contient la liste des n premiers nombres premiers
 	 * @param tabCrypte
+	 * 				   Tableau de caractères possédant chaque caractère du message crypté
 	 * @return tabInt
 	 */
+	/*@
+	 * require tabCrypte !="";
+	 * ensure tabInt != "";
+	 @*/
 	public int[] tabInt(int[] tabNbPremier, char[] tabCrypte) {
 		int a = tabCrypte.length;
 		int[] tabInt = new int[a];
@@ -94,6 +103,7 @@ public class Decrypteur extends Securite implements Serializable{
 	 * à l'utilisation des nombres premiers)
 	 * 
 	 * @param tabInt
+	 *              Tableau d'entier qui contient la liste des caractères en équivalent ascii
 	 * @return tabDecrypte
 	 */
 	public char[] tabDecrypte(int[] tabInt) {
